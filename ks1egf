@@ -313,13 +313,13 @@
     </div>
 
     <div class="container">
-      <!-- Who We Are (inside Home) -->
+      <!-- Who We Are -->
       <div class="home-subsection">
         <h2>Who We Are</h2>
         <p>KS1 Empire Group & Foundation (KS1EGF) is a nonprofit institution dedicated to advancing human freedom through ethical innovation in emerging technologies. We operate at the intersection of social impact and technological transformation.</p>
       </div>
 
-      <!-- Mission & Vision (inside Home) -->
+      <!-- Mission & Vision -->
       <div class="home-subsection">
         <h2>Mission & Vision</h2>
         <p>Our mission is to democratize access to 4IR technologies and empower underserved communities with tools for self-sovereignty, economic participation, and digital dignity. Our vision is a world where technology serves humanity—not the other way around.</p>
@@ -333,9 +333,8 @@
       <h1 class="section-title">About KS1 Empire Group & Foundation</h1>
       <p>KS1 Empire Group & Foundation (KS1EGF) is a registered nonprofit organization founded on the principle that emerging technologies should serve as tools for liberation, not control.</p>
       <p>We believe the Fourth Industrial Revolution (4IR)—comprising Blockchain, Crypto, Web3, Big Data, and Artificial Intelligence—offers unprecedented opportunities to rebuild systems with equity, transparency, and human dignity at their core.</p>
-      <p>Our team includes technologists, educators, economists, and community leaders united by a shared vision: a future where every individual has the tools to thrive in a digital world.</p>
       
-      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27d%20like%20to%20learn%20more%20about%20your%20foundation." 
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'd%20like%20to%20learn%20more%20about%20your%20foundation." 
          target="_blank" class="btn btn-primary" style="margin-top: 2rem;">
         Message Us on WhatsApp
       </a>
@@ -352,7 +351,7 @@
       <h3>Our Vision</h3>
       <p>A world where technology is a force for human liberation—where Blockchain, Crypto, Web3, Big Data, and AI are stewarded by the people, for the people.</p>
       
-      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27m%20inspired%20by%20your%20mission.%20How%20can%20I%20contribute%3F" 
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20inspired%20by%20your%20mission.%20How%20can%20I%20contribute?" 
          target="_blank" class="btn btn-outline-gold" style="margin-top: 2rem;">
         Support Our Mission
       </a>
@@ -369,7 +368,7 @@
         <span class="project-tag">Flagship Disruptive Project · First Live Project by KS1EGF</span>
         <h3>ShineGPT</h3>
         <p>An AI-powered knowledge platform designed to educate, empower, and connect communities through ethical, decentralized intelligence.</p>
-        <a href="https://wa.me/233240254680?text=Welcome%20to%20Team%20KS1EGF%21%20%E2%9C%A8%0ASending%20you%20details%20about%20ShineGPT%20now.%0A%0AStay%20empowered%20through%20the%20Fourth%20Industrial%20Revolution%20%284IR%29%3A%0ABlockchain%20%C2%B7%20Crypto%20%C2%B7%20Web3%20%C2%B7%20Big%20Data%20%C2%B7%20AI" 
+        <a href="https://wa.me/233240254680?text=Welcome%20to%20Team%20KS1EGF!%20%E2%9C%A8%0ASending%20you%20details%20about%20ShineGPT%20now.%0A%0AStay%20empowered%20through%20the%20Fourth%20Industrial%20Revolution%20(4IR):%0ABlockchain%20·%20Crypto%20·%20Web3%20·%20Big%20Data%20·%20AI" 
            target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
           Get ShineGPT Details
         </a>
@@ -402,7 +401,7 @@
       </div>
 
       <p style="margin-top: 2rem;">Or message us directly:</p>
-      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27m%20ready%20to%20get%20involved.%20Please%20add%20me%20to%20your%20updates." 
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20ready%20to%20get%20involved.%20Please%20add%20me%20to%20your%20updates." 
          target="_blank" class="btn btn-outline-gold">
         Chat with KS1EGF on WhatsApp
       </a>
@@ -416,7 +415,7 @@
       <p>We’re available exclusively via WhatsApp—the fastest way to connect in today’s world.</p>
       <p>Message us anytime, and we’ll respond promptly.</p>
       
-      <a href="https://wa.me/233240254680?text=Hello%20KS1EGF%21%20I%27m%20reaching%20out%20via%20your%20website.%20How%20can%20we%20collaborate%3F" 
+      <a href="https://wa.me/233240254680?text=Hello%20KS1EGF!%20I'm%20reaching%20out%20via%20your%20website.%20How%20can%20we%20collaborate?" 
          target="_blank" class="btn btn-primary" style="margin-top: 1.5rem; font-size: 1.1rem;">
         📲 Message KS1EGF on WhatsApp
       </a>
