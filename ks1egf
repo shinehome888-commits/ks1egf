@@ -5,7 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KS1 Empire Group & Foundation (KS1EGF)</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ========================================
+       KS1 Empire Group & Foundation (KS1EGF)
+       Brand: Blue #1E3A8A | Gold #D4AF37
+       Cloudflare Pages Ready – Single File
+       ======================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
       --black: #000000;
       --white: #FFFFFF;
@@ -14,6 +25,7 @@
       --light-gray: #f8f9fa;
       --dark-blue-gradient: linear-gradient(135deg, #1E3A8A, #2c5282);
     }
+
     body {
       font-family: 'Segoe UI', Inter, system-ui, sans-serif;
       line-height: 1.6;
@@ -21,21 +33,35 @@
       background-color: var(--white);
       scroll-behavior: smooth;
     }
+
     h1, h2, h3, h4, h5 {
       color: var(--gold);
       font-weight: 700;
       margin-bottom: 1rem;
     }
-    section {
-      padding: 4rem 2rem;
-      display: none;
-    }
-    .active-page { display: block; }
-    .hero, .why-4ir, footer, .page-black { background-color: var(--black); color: var(--white); }
-    .who-we-are, .projects-section, .page-white { background-color: var(--white); color: var(--black); }
-    .mission-vision, .page-light { background-color: var(--light-gray); color: var(--black); }
-    .cta-section, .page-blue { background: var(--dark-blue-gradient); color: var(--white); }
 
+    p, li {
+      margin-bottom: 1rem;
+    }
+
+    /* Page visibility */
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding-top: 6rem;
+    }
+
+    .active-page {
+      display: block;
+    }
+
+    /* Backgrounds */
+    .hero, .why-4ir, .page-black { background-color: var(--black); color: var(--white); }
+    .page-white { background-color: var(--white); color: var(--black); }
+    .page-light { background-color: var(--light-gray); color: var(--black); }
+    .page-blue { background: var(--dark-blue-gradient); color: var(--white); }
+
+    /* Buttons */
     .btn {
       display: inline-block;
       padding: 0.8rem 1.8rem;
@@ -46,27 +72,32 @@
       cursor: pointer;
       font-size: 1rem;
     }
+
     .btn-primary {
       background-color: var(--blue);
       color: var(--white);
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+
     .btn-primary:hover {
       background-color: #25419d;
       transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
+
     .btn-outline-gold {
       background: transparent;
       border: 2px solid var(--gold);
       color: var(--gold);
     }
+
     .btn-outline-gold:hover {
       background-color: var(--gold);
       color: var(--black);
       transform: translateY(-2px);
     }
 
+    /* Navigation */
     .navbar {
       position: fixed;
       top: 0;
@@ -79,25 +110,38 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .navbar-brand {
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--gold);
       text-decoration: none;
     }
+
     .nav-links {
       display: flex;
       list-style: none;
       gap: 1.5rem;
     }
+
     .nav-links a {
       color: var(--white);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--gold); }
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
     .menu-toggle span {
       width: 25px;
       height: 3px;
@@ -105,17 +149,84 @@
       margin: 3px 0;
       transition: 0.3s;
     }
-    .content-box { max-width: 800px; margin: 0 auto; text-align: center; }
-    .section-title { font-size: 2.2rem; margin-bottom: 2.5rem; }
-    .project-placeholder { font-style: italic; color: #666; margin-top: 1.5rem; }
-    footer {
-      text-align: center;
-      padding: 2.5rem 2rem 1.5rem;
-      font-size: 0.95rem;
-      line-height: 1.7;
+
+    /* Layout */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
-    .footer-text { max-width: 800px; margin: 0 auto; }
-    .form-group { margin: 1.5rem 0; }
+
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin: 2rem 0 2.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* Content blocks inside Home */
+    .home-subsection {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .home-subsection h2 {
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    /* Projects */
+    .project-card {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 1.5rem auto;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: var(--black);
+    }
+
+    .project-tag {
+      color: var(--gold);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-placeholder {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: 1.5rem;
+    }
+
+    /* Form */
+    .form-group {
+      margin: 1.5rem 0;
+    }
+
     input[type="tel"] {
       width: 100%;
       max-width: 350px;
@@ -125,6 +236,23 @@
       font-size: 1rem;
       text-align: center;
     }
+
+    /* Footer */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer-text {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -137,35 +265,26 @@
         padding: 1rem 0;
         gap: 1rem;
       }
-      .nav-links.active { display: flex; }
-      .menu-toggle { display: flex; }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
       .hero h1 { font-size: 2.2rem; }
       .hero p { font-size: 1rem; }
-      section { padding: 3rem 1.5rem; }
       .section-title { font-size: 1.8rem; }
-    }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding-top: 6rem;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    @media (max-width: 600px) {
       .hero-buttons { flex-direction: column; align-items: center; }
+      .container { padding: 0 1.5rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
   <nav class="navbar">
     <a href="#" class="navbar-brand" onclick="showPage('home')">KS1EGF</a>
     <div class="menu-toggle" id="mobile-menu">
@@ -182,8 +301,8 @@
     </ul>
   </nav>
 
-  <!-- HOME -->
-  <section id="home" class="active-page">
+  <!-- HOME PAGE -->
+  <div id="home" class="page active-page">
     <div class="hero">
       <h1>Building Freedom Systems for the Next Generation</h1>
       <p>KS1 Empire Group & Foundation (KS1EGF) leverages the integrated technologies of the Fourth Industrial Revolution (4IR)—Blockchain, Crypto, Web3, Big Data, and Artificial Intelligence—to create open, equitable, and resilient systems for global communities.</p>
@@ -193,198 +312,159 @@
       </div>
     </div>
 
-    <section class="who-we-are">
-      <div class="content-box">
-        <h2 class="section-title">Who We Are</h2>
-        <p>KS1 Empire Group & Foundation (KS1EGF) is a nonprofit institution dedicated to advancing human freedom through ethical innovation in emerging technologies.</p>
+    <div class="container">
+      <!-- Who We Are (inside Home) -->
+      <div class="home-subsection">
+        <h2>Who We Are</h2>
+        <p>KS1 Empire Group & Foundation (KS1EGF) is a nonprofit institution dedicated to advancing human freedom through ethical innovation in emerging technologies. We operate at the intersection of social impact and technological transformation.</p>
       </div>
-    </section>
 
-    <section class="mission-vision">
-      <div class="content-box">
-        <h2 class="section-title">Mission & Vision</h2>
-        <p>Our mission is to democratize access to 4IR technologies and empower underserved communities with tools for self-sovereignty, economic participation, and digital dignity.</p>
-      </div>
-    </section>
-
-    <section class="why-4ir">
-      <div class="content-box">
-        <h2 class="section-title">Why the Fourth Industrial Revolution Matters</h2>
-        <p>The 4IR is not just a wave of new technologies—it’s a systemic shift. Blockchain enables trustless collaboration. Crypto redefines value. Web3 returns ownership to users. Big Data reveals patterns for justice. AI amplifies human potential.</p>
-      </div>
-    </section>
-
-    <section class="projects-section">
-      <div class="content-box">
-        <h2 class="section-title">Our Projects</h2>
-        <div class="project-placeholder">
-          <p>Stay tuned! Our first flagship project launches soon.<br>Join our WhatsApp channel to be the first to know.</p>
-        </div>
-        <a href="#" class="btn btn-primary" onclick="showPage('get-involved')" style="margin-top: 1.5rem;">Get Early Access</a>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="content-box">
-        <h2 class="section-title">Join the Movement</h2>
-        <p>Become a builder, supporter, or advocate for freedom systems rooted in 4IR principles.</p>
-        <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27m%20interested%20in%20joining%20the%20movement.%20Please%20share%20more%20details." 
-           target="_blank" class="btn btn-outline-gold" style="margin-top: 1.5rem;">
-          Connect on WhatsApp
-        </a>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-text">
-        <p>© 2026 KS1 Empire Group & Foundation (KS1EGF)</p>
-        <p>A nonprofit institution building freedom systems through the technologies of the Fourth Industrial Revolution (4IR).<br>
-           Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)</p>
-      </div>
-    </footer>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="page-white">
-    <div style="padding-top: 8rem;">
-      <div class="content-box">
-        <h1 class="section-title">About KS1 Empire Group & Foundation</h1>
-        <p>KS1 Empire Group & Foundation (KS1EGF) is a registered nonprofit organization founded on the principle that emerging technologies should serve as tools for liberation, not control.</p>
-        <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27d%20like%20to%20learn%20more%20about%20your%20foundation." 
-           target="_blank" class="btn btn-primary" style="margin-top: 2rem;">
-          Message Us on WhatsApp
-        </a>
+      <!-- Mission & Vision (inside Home) -->
+      <div class="home-subsection">
+        <h2>Mission & Vision</h2>
+        <p>Our mission is to democratize access to 4IR technologies and empower underserved communities with tools for self-sovereignty, economic participation, and digital dignity. Our vision is a world where technology serves humanity—not the other way around.</p>
       </div>
     </div>
-    <footer>
-      <div class="footer-text">
-        <p>© 2026 KS1 Empire Group & Foundation (KS1EGF)</p>
-        <p>A nonprofit institution building freedom systems through the technologies of the Fourth Industrial Revolution (4IR).<br>
-           Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)</p>
-      </div>
-    </footer>
-  </section>
+  </div>
 
-  <!-- MISSION -->
-  <section id="mission" class="page-light">
-    <div style="padding-top: 8rem;">
-      <div class="content-box">
-        <h1 class="section-title">Mission & Vision</h1>
-        <h3>Our Mission</h3>
-        <p>To democratize access to Fourth Industrial Revolution (4IR) technologies and empower marginalized communities with tools for digital sovereignty, economic agency, and lifelong learning.</p>
-        <h3>Our Vision</h3>
-        <p>A world where technology is a force for human liberation—where Blockchain, Crypto, Web3, Big Data, and AI are stewarded by the people, for the people.</p>
-        <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27m%20inspired%20by%20your%20mission.%20How%20can%20I%20contribute%3F" 
-           target="_blank" class="btn btn-outline-gold" style="margin-top: 2rem;">
-          Support Our Mission
+  <!-- ABOUT PAGE -->
+  <div id="about" class="page page-white">
+    <div class="container">
+      <h1 class="section-title">About KS1 Empire Group & Foundation</h1>
+      <p>KS1 Empire Group & Foundation (KS1EGF) is a registered nonprofit organization founded on the principle that emerging technologies should serve as tools for liberation, not control.</p>
+      <p>We believe the Fourth Industrial Revolution (4IR)—comprising Blockchain, Crypto, Web3, Big Data, and Artificial Intelligence—offers unprecedented opportunities to rebuild systems with equity, transparency, and human dignity at their core.</p>
+      <p>Our team includes technologists, educators, economists, and community leaders united by a shared vision: a future where every individual has the tools to thrive in a digital world.</p>
+      
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27d%20like%20to%20learn%20more%20about%20your%20foundation." 
+         target="_blank" class="btn btn-primary" style="margin-top: 2rem;">
+        Message Us on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- MISSION PAGE -->
+  <div id="mission" class="page page-light">
+    <div class="container">
+      <h1 class="section-title">Mission & Vision</h1>
+      <h3>Our Mission</h3>
+      <p>To democratize access to Fourth Industrial Revolution (4IR) technologies and empower marginalized communities with tools for digital sovereignty, economic agency, and lifelong learning.</p>
+      
+      <h3>Our Vision</h3>
+      <p>A world where technology is a force for human liberation—where Blockchain, Crypto, Web3, Big Data, and AI are stewarded by the people, for the people.</p>
+      
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27m%20inspired%20by%20your%20mission.%20How%20can%20I%20contribute%3F" 
+         target="_blank" class="btn btn-outline-gold" style="margin-top: 2rem;">
+        Support Our Mission
+      </a>
+    </div>
+  </div>
+
+  <!-- PROJECTS PAGE -->
+  <div id="projects" class="page page-white">
+    <div class="container">
+      <h1 class="section-title">Our Projects</h1>
+      
+      <!-- ShineGPT -->
+      <div class="project-card">
+        <span class="project-tag">Flagship Disruptive Project · First Live Project by KS1EGF</span>
+        <h3>ShineGPT</h3>
+        <p>An AI-powered knowledge platform designed to educate, empower, and connect communities through ethical, decentralized intelligence.</p>
+        <a href="https://wa.me/233240254680?text=Welcome%20to%20Team%20KS1EGF%21%20%E2%9C%A8%0ASending%20you%20details%20about%20ShineGPT%20now.%0A%0AStay%20empowered%20through%20the%20Fourth%20Industrial%20Revolution%20%284IR%29%3A%0ABlockchain%20%C2%B7%20Crypto%20%C2%B7%20Web3%20%C2%B7%20Big%20Data%20%C2%B7%20AI" 
+           target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
+          Get ShineGPT Details
         </a>
       </div>
-    </div>
-    <footer>
-      <div class="footer-text">
-        <p>© 2026 KS1 Empire Group & Foundation (KS1EGF)</p>
-        <p>A nonprofit institution building freedom systems through the technologies of the Fourth Industrial Revolution (4IR).<br>
-           Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)</p>
-      </div>
-    </footer>
-  </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="page-white">
-    <div style="padding-top: 8rem;">
-      <div class="content-box">
-        <h1 class="section-title">Our Projects</h1>
-        <div class="project-placeholder">
-          <p>Our first flagship project is in final preparation.<br>We’re building something transformative—stay connected!</p>
-        </div>
-        <a href="#" class="btn btn-primary" onclick="showPage('get-involved')" style="margin-top: 1.5rem;">Join Our WhatsApp Update List</a>
-        <br><br>
-        <a href="#" class="btn btn-outline-gold" onclick="showPage('home')" style="margin-top: 1rem;">← Back to Home</a>
+      <!-- Future projects placeholder -->
+      <div class="project-placeholder">
+        <p>More transformative 4IR projects coming soon...</p>
       </div>
-    </div>
-    <footer>
-      <div class="footer-text">
-        <p>© 2026 KS1 Empire Group & Foundation (KS1EGF)</p>
-        <p>A nonprofit institution building freedom systems through the technologies of the Fourth Industrial Revolution (4IR).<br>
-           Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)</p>
-      </div>
-    </footer>
-  </section>
 
-  <!-- GET INVOLVED -->
-  <section id="get-involved" class="page-blue">
-    <div style="padding-top: 8rem;">
-      <div class="content-box">
-        <h1 class="section-title">Get Involved</h1>
-        <p>Be among the first to receive our groundbreaking projects directly on WhatsApp.</p>
-        <div class="form-group">
-          <p>Enter your WhatsApp number below (include country code, e.g., +233...)</p>
-          <input type="tel" id="userWhatsapp" placeholder="+233..." maxlength="15" />
-          <br>
-          <button class="btn" style="background: var(--gold); color: var(--black); margin-top: 1rem;" onclick="sendToAdmin()">
-            Send My Number to KS1EGF
-          </button>
-        </div>
-        <p style="margin-top: 2rem;">Or message us directly:</p>
-        <a href="https://wa.me/233240254680?text=Welcome%20to%20Team%20KS1EGF%21%20%E2%9C%A8%0ASending%20you%20our%20latest%20project%20details%20now.%0A%0AStay%20empowered%20through%20the%20Fourth%20Industrial%20Revolution%20%284IR%29%3A%0ABlockchain%20%C2%B7%20Crypto%20%C2%B7%20Web3%20%C2%B7%20Big%20Data%20%C2%B7%20AI" 
-           target="_blank" class="btn btn-outline-gold">
-          Chat with KS1EGF on WhatsApp
-        </a>
-        <br><br>
-        <a href="#" class="btn" onclick="showPage('home')" style="color: white; border: 1px solid white;">← Back to Home</a>
-      </div>
+      <a href="#" class="btn btn-outline-gold" onclick="showPage('get-involved')" style="margin-top: 2rem;">
+        Join Our WhatsApp Update List
+      </a>
     </div>
-    <footer>
-      <div class="footer-text">
-        <p>© 2026 KS1 Empire Group & Foundation (KS1EGF)</p>
-        <p>A nonprofit institution building freedom systems through the technologies of the Fourth Industrial Revolution (4IR).<br>
-           Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)</p>
-      </div>
-    </footer>
-  </section>
+  </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="page-white">
-    <div style="padding-top: 8rem;">
-      <div class="content-box">
-        <h1 class="section-title">Contact Us</h1>
-        <p>We’re available exclusively via WhatsApp—the fastest way to connect in today’s world.</p>
-        <a href="https://wa.me/233240254680?text=Hello%20KS1EGF%21%20I%27m%20reaching%20out%20via%20your%20website.%20How%20can%20we%20collaborate%3F" 
-           target="_blank" class="btn btn-primary" style="margin-top: 1.5rem; font-size: 1.1rem;">
-          📲 Message KS1EGF on WhatsApp
-        </a>
-        <br><br>
-        <a href="#" class="btn btn-outline-gold" onclick="showPage('home')">← Back to Home</a>
+  <!-- GET INVOLVED PAGE -->
+  <div id="get-involved" class="page page-blue">
+    <div class="container">
+      <h1 class="section-title">Get Involved</h1>
+      <p>Be among the first to receive our groundbreaking projects directly on WhatsApp.</p>
+
+      <div class="form-group">
+        <p>Enter your WhatsApp number below (include country code, e.g., +233...)</p>
+        <input type="tel" id="userWhatsapp" placeholder="+233..." maxlength="15" />
+        <br>
+        <button class="btn" style="background: var(--gold); color: var(--black); margin-top: 1rem;" onclick="submitWhatsApp()">
+          Send My Number to KS1EGF
+        </button>
       </div>
+
+      <p style="margin-top: 2rem;">Or message us directly:</p>
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF%21%20I%27m%20ready%20to%20get%20involved.%20Please%20add%20me%20to%20your%20updates." 
+         target="_blank" class="btn btn-outline-gold">
+        Chat with KS1EGF on WhatsApp
+      </a>
     </div>
-    <footer>
-      <div class="footer-text">
-        <p>© 2026 KS1 Empire Group & Foundation (KS1EGF)</p>
-        <p>A nonprofit institution building freedom systems through the technologies of the Fourth Industrial Revolution (4IR).<br>
-           Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)</p>
-      </div>
-    </footer>
-  </section>
+  </div>
 
+  <!-- CONTACT PAGE -->
+  <div id="contact" class="page page-white">
+    <div class="container">
+      <h1 class="section-title">Contact Us</h1>
+      <p>We’re available exclusively via WhatsApp—the fastest way to connect in today’s world.</p>
+      <p>Message us anytime, and we’ll respond promptly.</p>
+      
+      <a href="https://wa.me/233240254680?text=Hello%20KS1EGF%21%20I%27m%20reaching%20out%20via%20your%20website.%20How%20can%20we%20collaborate%3F" 
+         target="_blank" class="btn btn-primary" style="margin-top: 1.5rem; font-size: 1.1rem;">
+        📲 Message KS1EGF on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER (Global - Only One) -->
+  <footer>
+    <div class="footer-text">
+      <p>© 2026 KS1 Empire Group & Foundation (KS1EGF)</p>
+      <p>A nonprofit institution building freedom systems through the technologies of the Fourth Industrial Revolution (4IR).<br>
+         Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
   <script>
     function showPage(pageId) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active-page'));
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active-page');
+      });
       document.getElementById(pageId).classList.add('active-page');
       document.getElementById('nav-links').classList.remove('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
     document.getElementById('mobile-menu').addEventListener('click', () => {
       document.getElementById('nav-links').classList.toggle('active');
     });
-    document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
-    function sendToAdmin() {
-      const userInput = document.getElementById('userWhatsapp').value.trim();
-      if (!userInput || !userInput.startsWith('+')) {
+
+    // Prevent default anchor behavior
+    document.querySelectorAll('a[href="#"]').forEach(a => {
+      a.addEventListener('click', e => e.preventDefault());
+    });
+
+    // WhatsApp form submission
+    function submitWhatsApp() {
+      const input = document.getElementById('userWhatsapp');
+      const value = input.value.trim();
+      
+      if (!value || !value.startsWith('+')) {
         alert('Please enter a valid WhatsApp number with country code (e.g., +233240254680).');
         return;
       }
-      const message = `Hi KS1EGF! 👋\n\nPlease add my number to your project update list:\n${userInput}\n\nI’m excited to receive your 4IR innovations via WhatsApp!`;
-      window.open(`https://wa.me/233240254680?text=${encodeURIComponent(message)}`, '_blank');
+
+      const message = `Hi KS1EGF! 👋\n\nPlease add my number to your project update list:\n${value}\n\nI’m excited to receive your 4IR innovations via WhatsApp!`;
+      const url = `https://wa.me/233240254680?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
     }
   </script>
 
