@@ -89,11 +89,10 @@
       text-align: center;
     }
 
-    /* COMPANY NAME: MOVED UP + BLUE */
     .company-name {
       font-size: 2.2rem;
-      color: var(--blue); /* Changed to blue */
-      margin-bottom: 1.8rem; /* Increased space below to lift visual position */
+      color: var(--blue);
+      margin-bottom: 1.6rem;
       font-weight: 800;
       text-shadow: 0 0 8px rgba(30, 58, 138, 0.4);
     }
@@ -106,7 +105,7 @@
       text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     }
 
-    .subhead {
+    .description {
       max-width: 700px;
       margin: 0 auto 2rem;
       font-size: 1.05rem;
@@ -142,20 +141,15 @@
     }
 
     @media (max-width: 600px) {
-      .company-name {
-        font-size: 1.9rem;
-        margin-bottom: 1.6rem;
-      }
+      .company-name,
       .headline {
         font-size: 1.9rem;
-        margin-bottom: 1.2rem;
       }
       .hero-buttons .btn {
         margin: 0.5rem 0;
         width: 100%;
         max-width: 280px;
       }
-      .who-we-are h2 { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -175,11 +169,11 @@
   </div>
 
   <!-- LANDING PAGE -->
-  <div class="landing">
+  <div id="home" class="landing">
     <div class="company-name">KS1 Empire Group & Foundation (KS1EGF)</div>
     <h1 class="headline">Building Freedom Systems for the Next Generation</h1>
-    <p class="subhead">
-      KS1 Empire Group & Foundation (KS1EGF) leverages the integrated technologies of the Fourth Industrial Revolution (4IR)—Blockchain, Crypto, Web3, Big Data, and Artificial Intelligence.
+    <p class="description">
+      A disruptive nonprofit leveraging Fourth Industrial Revolution (4IR) technologies—Blockchain, Crypto, Web3, Big Data, and AI—to restore access, ownership, and freedom to global communities.
     </p>
     <div class="hero-buttons">
       <a href="#" class="btn" onclick="showPage('projects')">Explore Our Work</a>
@@ -187,19 +181,29 @@
     </div>
     <div class="who-we-are">
       <h2>Who We Are</h2>
-      <p>A nonprofit institution advancing human freedom through ethical innovation in emerging technologies.</p>
+      <p>KS1 Empire Group & Foundation (KS1EGF) is a nonprofit institution advancing human freedom through ethical innovation in emerging technologies.</p>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
     © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
-    A nonprofit building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
+    Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · Artificial Intelligence (AI)
   </footer>
 
   <!-- Hidden Pages -->
   <script>
+    // Create hidden pages
     const pages = ['about','mission','vision','projects','get-involved','contact'];
+    const content = {
+      about: "KS1 Empire Group & Foundation (KS1EGF) is a registered nonprofit organization founded on the principle that emerging technologies should serve as tools for liberation, not control.",
+      mission: "To democratize access to Fourth Industrial Revolution (4IR) technologies and empower marginalized communities with tools for digital sovereignty, economic agency, and lifelong learning.",
+      vision: "A world where technology is a force for human liberation—where Blockchain, Crypto, Web3, Big Data, and AI are stewarded by the people, for the people.",
+      projects: "Our first flagship project, ShineGPT, is an AI-powered knowledge platform designed to educate and empower communities through ethical, decentralized intelligence.",
+      'get-involved': "Join our movement. Be among the first to receive updates on our 4IR freedom projects directly on WhatsApp.",
+      contact: "We’re available exclusively via WhatsApp—the fastest way to connect in today’s world."
+    };
+
     pages.forEach(id => {
       const div = document.createElement('div');
       div.id = id;
@@ -208,19 +212,19 @@
         <div style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem;text-align:center;color:#fff;background:#000;">
           <button onclick="goHome()" style="position:absolute;top:1.2rem;left:1.2rem;background:#1E3A8A;color:white;border:none;padding:0.4rem 1rem;border-radius:6px;font-size:0.9rem;">← Back</button>
           <h1 style="color:#D4AF37;margin-bottom:1.5rem;font-weight:800;">${id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</h1>
-          <p>Content coming soon.</p>
-          <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20on%20the%20${id}%20page." 
+          <p style="max-width:600px;margin:0 auto 1.5rem;">${content[id]}</p>
+          <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20viewing%20the%20${id}%20page." 
              target="_blank" 
-             style="display:inline-block;background:#1E3A8A;color:white;padding:0.6rem 1.4rem;border-radius:6px;text-decoration:none;margin-top:1.5rem;">Message Us on WhatsApp</a>
+             style="display:inline-block;background:#1E3A8A;color:white;padding:0.6rem 1.4rem;border-radius:6px;text-decoration:none;">Message Us on WhatsApp</a>
         </div>
       `;
       document.body.appendChild(div);
     });
 
     function showPage(id) {
-      document.querySelector('.landing').style.display = 'none';
+      document.getElementById('home').style.display = 'none';
       document.querySelector('footer').style.display = 'none';
-      document.getElementById(id).style.display = 'block';
+      document.getElementById(id).style.display = 'flex';
     }
 
     function goHome() {
@@ -228,7 +232,7 @@
         if (['menuBtn','hiddenMenu'].includes(el.id)) return;
         el.style.display = 'none';
       });
-      document.querySelector('.landing').style.display = 'flex';
+      document.getElementById('home').style.display = 'flex';
       document.querySelector('footer').style.display = 'block';
     }
 
