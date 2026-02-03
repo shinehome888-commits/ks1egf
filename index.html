@@ -17,7 +17,6 @@
       background: var(--black);
       color: var(--white);
       line-height: 1.5;
-      scroll-behavior: smooth;
     }
     h1, h2, h3 {
       font-weight: 800;
@@ -198,7 +197,7 @@
     <div class="company-name">KS1 Empire Group & Foundation (KS1EGF)</div>
     <h1 class="headline">Building Freedom Systems for the Next Generation</h1>
     <p class="description">
-      Disruptive nonprofit projects using Blockchain, Crypto, Web3, Big Data & AI to restore access, ownership & freedom.
+      Disruptive nonprofit projects by KS1 Empire Group & Foundation (KS1EGF) using Blockchain, Crypto, Web3, Big Data & AI to restore access, ownership & freedom.
     </p>
     <div class="hero-buttons">
       <a href="#" class="btn" onclick="showPage('projects')">Explore Our Work</a>
@@ -216,31 +215,37 @@
     Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
   </footer>
 
-  <!-- HIDDEN PAGES -->
+  <!-- DEDICATED PAGES (HIDDEN BY DEFAULT) -->
   <script>
-    const pages = ['about','mission','vision','projects','get-involved','contact'];
-    const content = {
-      about: "KS1 Empire Group & Foundation (KS1EGF) is a registered nonprofit organization founded on the principle that emerging technologies should serve as tools for liberation, not control.",
-      mission: "To democratize access to Fourth Industrial Revolution (4IR) technologies and empower marginalized communities with tools for digital sovereignty, economic agency, and lifelong learning.",
-      vision: "A world where technology is a force for human liberation—where Blockchain, Crypto, Web3, Big Data, and AI are stewarded by the people, for the people.",
-      projects: "Our first flagship project, ShineGPT, is an AI-powered knowledge platform designed to educate and empower communities through ethical, decentralized intelligence.",
-      'get-involved': "Join our movement. Be among the first to receive updates on our 4IR freedom projects directly on WhatsApp.",
-      contact: "We’re available exclusively via WhatsApp—the fastest way to connect in today’s world."
-    };
+    // Page content from your GitHub description + logical expansion
+    const pages = [
+      { id: 'about', title: 'About', 
+        text: "KS1 Empire Group & Foundation (KS1EGF) is a registered nonprofit organization founded on the principle that emerging technologies should serve as tools for liberation, not control." },
+      { id: 'mission', title: 'Mission', 
+        text: "To democratize access to Fourth Industrial Revolution (4IR) technologies and empower marginalized communities with tools for digital sovereignty, economic agency, and lifelong learning." },
+      { id: 'vision', title: 'Vision', 
+        text: "A world where technology is a force for human liberation—where Blockchain, Crypto, Web3, Big Data, and AI are stewarded by the people, for the people." },
+      { id: 'projects', title: 'Projects', 
+        text: "Our first flagship project, ShineGPT, is an AI-powered knowledge platform designed to educate and empower communities through ethical, decentralized intelligence." },
+      { id: 'get-involved', title: 'Get Involved', 
+        text: "Join our movement. Be among the first to receive updates on our 4IR freedom projects directly on WhatsApp." },
+      { id: 'contact', title: 'Contact', 
+        text: "We’re available exclusively via WhatsApp—the fastest way to connect in today’s world." }
+    ];
 
-    // Create page elements
-    pages.forEach(id => {
+    // Create each page dynamically
+    pages.forEach(page => {
       const div = document.createElement('div');
-      div.id = id;
+      div.id = page.id;
       div.className = 'page';
       div.innerHTML = `
         <div class="back-btn">
           <button class="btn" onclick="goHome()">← Back</button>
         </div>
         <div class="page-content">
-          <h1 style="color:var(--gold); margin-bottom:1.5rem;">${id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</h1>
-          <p>${content[id]}</p>
-          <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20on%20the%20${id}%20page." 
+          <h1 style="color:var(--gold); margin-bottom:1.5rem;">${page.title}</h1>
+          <p>${page.text}</p>
+          <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20on%20the%20${page.id}%20page." 
              target="_blank" class="btn" style="margin-top:1.5rem;">Message Us on WhatsApp</a>
         </div>
       `;
@@ -254,7 +259,7 @@
     }
 
     function goHome() {
-      pages.forEach(id => document.getElementById(id).style.display = 'none');
+      pages.forEach(p => document.getElementById(p.id).style.display = 'none');
       document.getElementById('home').style.display = 'flex';
       document.querySelector('footer').style.display = 'block';
     }
