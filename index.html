@@ -18,129 +18,7 @@
       color: var(--white);
       line-height: 1.5;
     }
-    h1, h2, h3 {
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-    p { color: #ccc; margin-bottom: 1.2rem; }
-    .btn {
-      display: inline-block;
-      background: var(--blue);
-      color: var(--white);
-      padding: 0.6rem 1.4rem;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.5);
-    }
-    .menu-btn {
-      position: fixed;
-      top: 1.2rem;
-      left: 1.2rem;
-      z-index: 1000;
-      background: var(--blue);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.95rem;
-    }
-    .hidden-menu {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s;
-    }
-    .hidden-menu.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .hidden-menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.4rem;
-      margin: 1rem 0;
-    }
-    .hidden-menu a:hover { color: var(--gold); }
-
-    /* LANDING PAGE — ONLY THIS CONTENT */
-    .landing {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 0 1.5rem;
-      text-align: center;
-    }
-
-    .company-name {
-      font-size: 2.0rem;
-      color: var(--blue);
-      margin-bottom: 1.0rem;
-      font-weight: 800;
-    }
-
-    .headline {
-      font-size: 1.9rem;
-      color: var(--gold);
-      margin-bottom: 1.0rem;
-      font-weight: 800;
-    }
-
-    .description {
-      max-width: 650px;
-      margin: 0 auto 1.8rem;
-      font-size: 1.05rem;
-      color: #ddd;
-    }
-
-    .hero-buttons {
-      margin: 0 0 1.8rem;
-    }
-    .hero-buttons .btn {
-      margin: 0 0.6rem;
-      font-size: 0.95rem;
-    }
-
-    .who-we-are {
-      max-width: 550px;
-      padding: 1.2rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      text-align: center;
-    }
-    .who-we-are h2 {
-      color: var(--gold);
-      margin-bottom: 0.7rem;
-      font-size: 1.4rem;
-    }
-
-    footer {
-      margin-top: 2rem;
-      padding: 1.2rem;
-      color: #888;
-      font-size: 0.85rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.03);
-    }
-
-    /* OTHER PAGES */
-    .page {
-      display: none;
+    .container {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -149,54 +27,87 @@
       padding: 2rem 1.5rem;
       text-align: center;
     }
-
-    .back-btn {
-      position: absolute;
-      top: 1.2rem;
-      left: 1.2rem;
+    .company-name {
+      font-size: 2.0rem;
+      color: var(--blue);
+      font-weight: 800;
+      margin-bottom: 1rem;
     }
-    .back-btn .btn {
-      padding: 0.4rem 1rem;
-      font-size: 0.9rem;
+    .headline {
+      font-size: 1.9rem;
+      color: var(--gold);
+      font-weight: 800;
+      margin-bottom: 1.2rem;
     }
-
+    .description {
+      max-width: 650px;
+      margin: 0 auto 1.8rem;
+      font-size: 1.05rem;
+      color: #ddd;
+    }
+    .hero-buttons {
+      margin: 0 0 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.65rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 0.6rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.5);
+    }
+    .who-we-are {
+      max-width: 550px;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+    .who-we-are h2 {
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+    footer {
+      margin-top: 2.5rem;
+      padding: 1.2rem;
+      color: #888;
+      font-size: 0.85rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
     @media (max-width: 600px) {
       .company-name { font-size: 1.7rem; }
       .headline { font-size: 1.6rem; }
       .hero-buttons .btn {
-        margin: 0.4rem 0;
+        display: block;
         width: 100%;
         max-width: 250px;
+        margin: 0.4rem auto;
       }
-      .who-we-are h2 { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Menu Button -->
-  <button class="menu-btn" id="menuBtn">Menu</button>
-
-  <!-- Hidden Navigation Menu -->
-  <div class="hidden-menu" id="hiddenMenu">
-    <a href="#" onclick="showPage('about')">About</a>
-    <a href="#" onclick="showPage('mission')">Mission</a>
-    <a href="#" onclick="showPage('vision')">Vision</a>
-    <a href="#" onclick="showPage('projects')">Projects</a>
-    <a href="#" onclick="showPage('get-involved')">Get Involved</a>
-    <a href="#" onclick="showPage('contact')">Contact</a>
-  </div>
-
-  <!-- LANDING PAGE — EXACT CONTENT FROM YOUR REQUEST -->
-  <div id="home" class="landing">
+  <div class="container">
     <div class="company-name">KS1 Empire Group & Foundation (KS1EGF)</div>
     <h1 class="headline">Building Freedom Systems for the Next Generation</h1>
     <p class="description">
       Disruptive nonprofit projects by KS1 Empire Group & Foundation (KS1EGF) using Blockchain, Crypto, Web3, Big Data & AI to restore access, ownership & freedom.
     </p>
     <div class="hero-buttons">
-      <a href="#" class="btn" onclick="showPage('projects')">Explore Our Work</a>
-      <a href="#" class="btn" onclick="showPage('about')">Learn About KS1EGF</a>
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'd%20like%20to%20explore%20your%20work." 
+         target="_blank" class="btn">Explore Our Work</a>
+      <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'd%20like%20to%20learn%20more%20about%20your%20foundation." 
+         target="_blank" class="btn">Learn About KS1EGF</a>
     </div>
     <div class="who-we-are">
       <h2>Who We Are</h2>
@@ -204,70 +115,9 @@
     </div>
   </div>
 
-  <!-- FOOTER — EXACT TEXT -->
   <footer>
     © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
     Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
   </footer>
-
-  <!-- DEDICATED PAGES (HIDDEN UNTIL CLICKED) -->
-  <script>
-    const pages = [
-      { id: 'about', title: 'About', 
-        text: "KS1 Empire Group & Foundation (KS1EGF) is a registered nonprofit organization founded on the principle that emerging technologies should serve as tools for liberation, not control." },
-      { id: 'mission', title: 'Mission', 
-        text: "To democratize access to Fourth Industrial Revolution (4IR) technologies and empower marginalized communities with tools for digital sovereignty, economic agency, and lifelong learning." },
-      { id: 'vision', title: 'Vision', 
-        text: "A world where technology is a force for human liberation—where Blockchain, Crypto, Web3, Big Data, and AI are stewarded by the people, for the people." },
-      { id: 'projects', title: 'Projects', 
-        text: "Our first flagship project, ShineGPT, is an AI-powered knowledge platform designed to educate and empower communities through ethical, decentralized intelligence." },
-      { id: 'get-involved', title: 'Get Involved', 
-        text: "Join our movement. Be among the first to receive updates on our 4IR freedom projects directly on WhatsApp." },
-      { id: 'contact', title: 'Contact', 
-        text: "We’re available exclusively via WhatsApp—the fastest way to connect in today’s world." }
-    ];
-
-    // Create each page
-    pages.forEach(page => {
-      const div = document.createElement('div');
-      div.id = page.id;
-      div.className = 'page';
-      div.innerHTML = `
-        <div class="back-btn">
-          <button class="btn" onclick="goHome()">← Back</button>
-        </div>
-        <div style="max-width:650px;">
-          <h1 style="color:var(--gold); margin-bottom:1.5rem;">${page.title}</h1>
-          <p>${page.text}</p>
-          <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20on%20the%20${page.id}%20page." 
-             target="_blank" class="btn" style="margin-top:1.5rem;">Message Us on WhatsApp</a>
-        </div>
-      `;
-      document.body.appendChild(div);
-    });
-
-    function showPage(id) {
-      document.getElementById('home').style.display = 'none';
-      document.querySelector('footer').style.display = 'none';
-      document.getElementById(id).style.display = 'flex';
-    }
-
-    function goHome() {
-      pages.forEach(p => document.getElementById(p.id).style.display = 'none');
-      document.getElementById('home').style.display = 'flex';
-      document.querySelector('footer').style.display = 'block';
-    }
-
-    document.getElementById('menuBtn').addEventListener('click', () => {
-      document.getElementById('hiddenMenu').classList.add('active');
-    });
-
-    document.getElementById('hiddenMenu').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('hiddenMenu')) {
-        document.getElementById('hiddenMenu').classList.remove('active');
-      }
-    });
-  </script>
-
 </body>
 </html>
