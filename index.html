@@ -16,7 +16,7 @@
       font-family: 'Segoe UI', Inter, system-ui, sans-serif;
       background: var(--black);
       color: var(--white);
-      line-height: 1.5;
+      line-height: 1.6;
     }
     .page {
       display: none;
@@ -86,12 +86,20 @@
       padding: 1.5rem;
       border-top: 1px solid rgba(255,255,255,0.05);
       margin-top: 1.5rem;
-      max-width: 550px;
+      max-width: 650px;
     }
     .section h2 {
       color: var(--gold);
       margin-bottom: 0.8rem;
       font-weight: 800;
+    }
+    .about-content {
+      text-align: left;
+      line-height: 1.7;
+      color: #ddd;
+    }
+    .about-content p {
+      margin-bottom: 1.2rem;
     }
     .coming-soon {
       color: #888;
@@ -119,6 +127,7 @@
         margin: 0.4rem auto;
       }
       .section { padding: 1.2rem; }
+      .about-content { padding: 0; }
     }
   </style>
 </head>
@@ -135,12 +144,54 @@
       </p>
       <div class="hero-buttons">
         <a href="#" class="btn" onclick="showPage('projects')">Explore Our Work</a>
-        <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'd%20like%20to%20learn%20more%20about%20your%20foundation." 
-           target="_blank" class="btn">Learn About KS1EGF</a>
+        <a href="#" class="btn" onclick="showPage('about')">Learn About KS1EGF</a>
       </div>
       <div class="section">
         <h2>Who We Are</h2>
         <p>A nonprofit institution advancing human freedom through ethical innovation in emerging technologies.</p>
+      </div>
+    </div>
+    <footer>
+      © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
+      Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
+    </footer>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div id="about" class="page">
+    <div class="back-btn">
+      <button class="btn" style="padding:0.4rem 1rem;font-size:0.9rem;" onclick="showPage('home')">← Back</button>
+    </div>
+    <div class="content-wrapper">
+      <h1 style="color:var(--gold); margin: 0 0 1.5rem; font-weight:800;">About KS1 Empire Group & Foundation</h1>
+      <div class="section">
+        <div class="about-content">
+          <p>
+            <strong>KS1 Empire Group & Foundation (KS1EGF)</strong> is a registered nonprofit organization founded on a simple but radical belief: 
+            <em>the Fourth Industrial Revolution (4IR) must serve humanity—not control it.</em>
+          </p>
+          <p>
+            We exist to democratize access to transformative technologies—Blockchain, Cryptocurrency, Web3, Big Data, and Artificial Intelligence—so that underserved communities, especially in Africa and the Global South, can reclaim ownership of their data, identity, and economic future.
+          </p>
+          <p>
+            Unlike corporate tech giants, we build <strong>freedom systems</strong>: open, ethical, and community-governed tools that prioritize human dignity over profit.
+          </p>
+          <p>
+            Our work is guided by three core principles:
+          </p>
+          <p>
+            <strong>1. Access</strong> — Technology should be available to all, regardless of connectivity or income.<br>
+            <strong>2. Ownership</strong> — People must own their data, assets, and digital identity.<br>
+            <strong>3. Freedom</strong> — Tools should empower, not surveil or manipulate.
+          </p>
+          <p>
+            We are not just developers—we are builders of a more just digital world.
+          </p>
+        </div>
+      </div>
+      <div style="margin-top: 1.5rem;">
+        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'd%20like%20to%20learn%20more%20about%20your%20foundation." 
+           target="_blank" class="btn">Message Team KS1EGF</a>
       </div>
     </div>
     <footer>
@@ -157,7 +208,6 @@
     <div class="content-wrapper">
       <h1 style="color:var(--gold); margin: 0 0 1.5rem; font-weight:800;">Our Projects</h1>
 
-      <!-- ShineGPT -->
       <div class="section">
         <h2>ShineGPT — Flagship Project</h2>
         <p>
@@ -166,7 +216,6 @@
         <a href="https://shinegpt.pages.dev" target="_blank" class="btn" style="margin-top: 1rem;">Visit ShineGPT</a>
       </div>
 
-      <!-- KS1 Wallet -->
       <div class="section">
         <h2>KS1 Wallet</h2>
         <p>
