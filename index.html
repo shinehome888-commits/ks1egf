@@ -40,6 +40,7 @@
       padding: 0 1.5rem;
       text-align: center;
     }
+    /* Top Navigation - Only Mission & Get Involved */
     .top-nav {
       position: fixed;
       top: 1.2rem;
@@ -147,19 +148,46 @@
       margin-top: auto;
       width: 100%;
     }
+
+    /* Mobile Optimization */
     @media (max-width: 600px) {
-      .top-nav { 
-        flex-direction: column;
-        gap: 0.5rem;
+      /* Move nav below company name on small screens */
+      .top-nav {
+        position: static;
+        top: auto;
+        right: auto;
+        margin: 1rem 0 1.5rem;
+        justify-content: center;
+        order: 1; /* Place after company name but before headline */
       }
-      .nav-link { 
-        padding: 0.3rem 0.7rem;
-        font-size: 0.8rem;
+      .content-wrapper {
+        padding-top: 1.5rem;
       }
-      .company-name { font-size: 1.7rem; }
-      .trust-badge { font-size: 0.9rem; }
-      .headline { font-size: 1.6rem; }
-      .subhead { font-size: 1rem; }
+      .company-name {
+        order: 0;
+      }
+      .trust-badge {
+        order: 2;
+      }
+      .headline {
+        order: 3;
+      }
+      .subhead {
+        order: 4;
+      }
+      .hero-buttons {
+        order: 5;
+      }
+      .section {
+        order: 6;
+      }
+      footer {
+        order: 7;
+      }
+      .nav-link {
+        padding: 0.35rem 0.9rem;
+        font-size: 0.85rem;
+      }
       .hero-buttons .btn {
         display: block;
         width: 100%;
@@ -172,11 +200,9 @@
 </head>
 <body>
 
-  <!-- Top-Right Navigation -->
+  <!-- Top-Right Navigation (Desktop) / Centered Below Company Name (Mobile) -->
   <div class="top-nav">
-    <button class="nav-link" onclick="showPage('about')">About</button>
     <button class="nav-link" onclick="showPage('mission')">Mission</button>
-    <button class="nav-link" onclick="showPage('projects')">Projects</button>
     <button class="nav-link" onclick="showPage('get-involved')">Get Involved</button>
   </div>
 
