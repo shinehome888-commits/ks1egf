@@ -21,14 +21,18 @@
     .page {
       display: none;
       min-height: 100vh;
-      padding: 2rem 1.5rem;
+      position: relative;
     }
     .active-page {
       display: block;
     }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
+    .content-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1.5rem;
       text-align: center;
     }
     .company-name {
@@ -49,6 +53,7 @@
       margin-bottom: 1.2rem;
     }
     .description {
+      max-width: 650px;
       margin: 0 auto 1.8rem;
       font-size: 1.05rem;
       color: #ddd;
@@ -81,6 +86,7 @@
       padding: 1.5rem;
       border-top: 1px solid rgba(255,255,255,0.05);
       margin-top: 1.5rem;
+      max-width: 550px;
     }
     .section h2 {
       color: var(--gold);
@@ -90,14 +96,16 @@
     .coming-soon {
       color: #888;
       font-style: italic;
+      margin-top: 0.5rem;
     }
     footer {
-      margin-top: 2.5rem;
+      text-align: center;
       padding: 1.2rem;
       color: #888;
       font-size: 0.85rem;
-      text-align: center;
       border-top: 1px solid rgba(255,255,255,0.03);
+      margin-top: auto;
+      width: 100%;
     }
     @media (max-width: 600px) {
       .company-name { font-size: 1.7rem; }
@@ -110,6 +118,9 @@
         max-width: 250px;
         margin: 0.4rem auto;
       }
+      .section {
+        padding: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -117,7 +128,7 @@
 
   <!-- HOME PAGE -->
   <div id="home" class="page active-page">
-    <div class="container">
+    <div class="content-wrapper">
       <div class="company-name">KS1 Empire Group & Foundation (KS1EGF)</div>
       <div class="trust-badge">🌍 A nonprofit advancing digital sovereignty through open 4IR innovation.</div>
       <h1 class="headline">Building Freedom Systems for the Next Generation</h1>
@@ -145,7 +156,7 @@
     <div class="back-btn">
       <button class="btn" style="padding:0.4rem 1rem;font-size:0.9rem;" onclick="showPage('home')">← Back</button>
     </div>
-    <div class="container">
+    <div class="content-wrapper">
       <h1 style="color:var(--gold); margin: 0 0 1.5rem; font-weight:800;">Our Projects</h1>
 
       <!-- ShineGPT -->
@@ -154,11 +165,7 @@
         <p>
           An AI-powered knowledge platform delivering uncensored, ethical education via low-data SMS and web — built for communities with restricted access.
         </p>
-        <div class="project-buttons" style="margin-top: 1rem;">
-          <a href="https://shinegpt.pages.dev" target="_blank" class="btn">Visit ShineGPT</a>
-          <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20Please%20send%20me%20more%20details%20about%20ShineGPT." 
-             target="_blank" class="btn" style="background:#2c5282;">WhatsApp Details</a>
-        </div>
+        <a href="https://shinegpt.pages.dev" target="_blank" class="btn" style="margin-top: 1rem;">Visit ShineGPT</a>
       </div>
 
       <!-- KS1 Wallet -->
@@ -170,11 +177,15 @@
         <p class="coming-soon">Coming Soon</p>
       </div>
 
-      <div style="margin-top: 2rem;">
+      <div style="margin-top: 1.5rem;">
         <a href="https://wa.me/233240254680?text=Hi%20KS1EGF!%20I'm%20interested%20in%20your%20projects." 
            target="_blank" class="btn">Contact Us on WhatsApp</a>
       </div>
     </div>
+    <footer>
+      © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
+      Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
+    </footer>
   </div>
 
   <script>
