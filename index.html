@@ -23,24 +23,33 @@
       color: var(--white);
       line-height: 1.6;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Futuristic Background */
-    body::before {
-      content: "";
+    /* DYNAMIC BACKGROUND LAYER */
+    #bg-watermark {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: 
-        radial-gradient(circle at 10% 20%, rgba(30, 58, 138, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 25%);
-      z-index: -1;
       pointer-events: none;
+      z-index: -1;
+      opacity: 0.04;
+    }
+    .watermark-text {
+      position: absolute;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--white);
+      opacity: 0.15;
+      transform-origin: center;
+      text-shadow: 0 0 12px rgba(255,255,255,0.3);
+      mix-blend-mode: overlay;
     }
 
     .page {
       display: none;
       min-height: 100vh;
       position: relative;
+      z-index: 2;
     }
     .active-page {
       display: block;
@@ -140,7 +149,6 @@
       z-index: 1000;
     }
 
-    /* GOLD-GLOW SECTIONS */
     .section {
       padding: 1.8rem;
       margin-top: 1.8rem;
@@ -182,7 +190,6 @@
       margin-bottom: 1.3rem;
     }
 
-    /* GOLD HIGHLIGHT FOR PRINCIPLES ONLY */
     .principle {
       color: var(--gold);
       font-weight: 700;
@@ -218,6 +225,9 @@
   </style>
 </head>
 <body>
+
+  <!-- DYNAMIC BACKGROUND -->
+  <div id="bg-watermark"></div>
 
   <!-- HOME PAGE -->
   <div id="home" class="page active-page">
@@ -287,7 +297,7 @@
 
   <!-- MISSION PAGE -->
   <div id="mission" class="page">
-    <div class "back-btn">
+    <div class="back-btn">
       <button class="btn" style="padding:0.45rem 1.1rem;font-size:0.92rem;" onclick="showPage('home')">← Back</button>
     </div>
     <div class="content-wrapper">
@@ -396,11 +406,45 @@
   </div>
 
   <script>
+    // Generate dynamic KS1EGF watermark background
+    function createWatermark() {
+      const container = document.getElementById('bg-watermark');
+      const count = 10;
+      const text = "KS1EGF";
+      
+      for (let i = 0; i < count; i++) {
+        const span = document.createElement('div');
+        span.className = 'watermark-text';
+        span.textContent = text;
+        
+        // Random position
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        
+        // Random rotation (-30° to 30°)
+        const rotate = (Math.random() * 60) - 30;
+        
+        // Random size (2.5rem to 4rem)
+        const size = 2.5 + Math.random() * 1.5;
+        
+        span.style.left = `${x}%`;
+        span.style.top = `${y}%`;
+        span.style.transform = `rotate(${rotate}deg)`;
+        span.style.fontSize = `${size}rem`;
+        span.style.opacity = 0.08 + Math.random() * 0.07;
+        
+        container.appendChild(span);
+      }
+    }
+
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
       document.getElementById(pageId).classList.add('active-page');
       window.scrollTo(0, 0);
     }
+
+    // Initialize on load
+    window.addEventListener('load', createWatermark);
   </script>
 
 </body>
