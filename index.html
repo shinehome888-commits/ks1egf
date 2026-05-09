@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="KS1 Empire Group & Foundation (KS1EGF) builds freedom systems using Blockchain, AI, and Web3 to restore access, ownership & digital sovereignty for underserved communities.">
-  <meta property="og:title" content="KS1 Empire Group & Foundation (KS1EGF)">
-  <meta property="og:description" content="Building freedom systems through 4IR: Blockchain, Crypto, Web3, Big Data & AI">
+  <meta name="description" content="KS1 Empire Global Foundation builds freedom systems using Blockchain, AI, and Web3 to restore access, ownership & digital sovereignty for underserved communities.">
+  <meta property="og:title" content="KS1 Empire Global Foundation">
+  <meta property="og:description" content="Restoring digital freedom through the Fourth Industrial Revolution: Blockchain, Crypto, Web3, Big Data & AI">
   <meta property="og:url" content="https://ks1egf.pages.dev">
   <meta property="og:type" content="website">
-  <title>KS1 Empire Group & Foundation (KS1EGF)</title>
+  <title>KS1 Empire Global Foundation</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --white: #FFFFFF;
       --black: #000000;
-      --blue: #1E3A8A;
+      --deep-blue: #0A1538;
       --gold: #D4AF37;
     }
 
@@ -79,34 +79,48 @@
       padding-top: 4rem;
     }
 
-    /* === REDESIGNED TITLE AREA === */
+    /* === 3D COMPANY NAME + GOLD GLOW === */
     .company-name {
-      font-size: 2.4rem;
-      color: var(--gold);
+      font-size: 2.5rem;
+      color: var(--deep-blue);
       font-weight: 900;
       margin-bottom: 0.4rem;
-      text-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
+      text-shadow:
+        0 1px 0 #050B1C,
+        0 2px 0 #050B1C,
+        0 3px 0 #050B1C,
+        0 4px 8px rgba(10, 21, 56, 0.3),
+        8px 2px 12px rgba(212, 175, 55, 0.5),
+        12px 4px 20px rgba(212, 175, 55, 0.3);
       letter-spacing: 1px;
     }
     .trust-badge {
       font-size: 1.0rem;
-      color: var(--blue);
+      color: var(--deep-blue);
       margin-bottom: 1.2rem;
       font-weight: 600;
     }
+
+    /* === 3D HEADLINE === */
     .headline {
       font-size: 2.6rem;
-      color: var(--black);
+      color: var(--deep-blue);
       font-weight: 900;
       margin-bottom: 1.0rem;
       letter-spacing: -0.5px;
+      text-shadow:
+        0 1px 0 #050B1C,
+        0 2px 0 #050B1C,
+        0 3px 0 #050B1C,
+        0 4px 8px rgba(10, 21, 56, 0.25);
     }
     .subhead {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--black);
       margin-bottom: 2.0rem;
-      max-width: 650px;
+      max-width: 700px;
       font-weight: 500;
+      line-height: 1.5;
     }
 
     .hero-buttons {
@@ -117,25 +131,27 @@
       gap: 1.0rem;
     }
 
+    /* === DEEP BLUE BUTTONS === */
     .btn {
       display: inline-block;
-      background: var(--gold);
-      color: var(--black);
+      background: var(--deep-blue);
+      color: var(--white);
       padding: 0.75rem 1.8rem;
-      border: 2px solid var(--gold);
+      border: 2px solid var(--deep-blue);
       border-radius: 8px;
       font-weight: 800;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+      box-shadow: 0 4px 12px rgba(10, 21, 56, 0.25);
       min-width: 190px;
       font-size: 1.05rem;
       letter-spacing: 0.5px;
     }
     .btn:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
-      background: var(--white);
+      box-shadow: 0 6px 16px rgba(10, 21, 56, 0.4), 0 0 12px rgba(212, 175, 55, 0.3);
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
     .back-btn {
@@ -143,6 +159,15 @@
       top: 1.3rem;
       left: 1.3rem;
       z-index: 1000;
+    }
+    .back-btn .btn {
+      background: #f4f4f4;
+      border-color: #ccc;
+      color: var(--black);
+      font-weight: 700;
+      min-width: auto;
+      padding: 0.5rem 1.2rem;
+      font-size: 1.0rem;
     }
 
     .section {
@@ -152,11 +177,11 @@
       background: rgba(250, 250, 250, 0.7);
       border-radius: 14px;
       position: relative;
-      border: 1px solid rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(10, 21, 56, 0.1);
       box-shadow: 0 6px 20px rgba(0,0,0,0.03);
     }
     .section h2 {
-      color: var(--gold);
+      color: var(--deep-blue);
       margin-bottom: 1.2rem;
       font-weight: 800;
       font-size: 1.8rem;
@@ -184,25 +209,18 @@
       padding: 1.5rem;
       color: #666;
       font-size: 0.9rem;
-      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      border-top: 1px solid rgba(10, 21, 56, 0.15);
       margin-top: auto;
       width: 100%;
     }
 
     @media (max-width: 600px) {
-      .page:not(#home) .content-wrapper {
-        padding-top: 3.8rem;
-      }
+      .page:not(#home) .content-wrapper { padding-top: 3.8rem; }
       .hero-buttons { gap: 0.8rem; }
-      .btn {
-        width: 100%;
-        max-width: 280px;
-        padding: 0.7rem 1.4rem;
-        font-size: 1.0rem;
-      }
+      .btn { width: 100%; max-width: 280px; padding: 0.7rem 1.4rem; font-size: 1.0rem; }
       .company-name { font-size: 2.0rem; }
-      .headline { font-size: 2.2rem; }
-      .subhead { font-size: 1.1rem; }
+      .headline { font-size: 2.1rem; }
+      .subhead { font-size: 1.05rem; }
       .section { padding: 1.6rem; }
     }
   </style>
@@ -215,10 +233,10 @@
   <!-- HOME PAGE -->
   <div id="home" class="page active-page">
     <div class="content-wrapper">
-      <div class="company-name">KS1 Empire Group & Foundation</div>
+      <div class="company-name">KS1 Empire Global Foundation</div>
       <div class="trust-badge">🌍 A nonprofit advancing digital sovereignty through open 4IR innovation.</div>
-      <h1 class="headline">Restoring Digital Freedom Through 4IR</h1>
-      <p class="subhead">Blockchain · Crypto · AI · Web3 for the underserved</p>
+      <h1 class="headline">Restoring Digital Freedom Through The Fourth Industrial Revolution</h1>
+      <p class="subhead">Blockchain · Crypto · AI · Web3 · Big Data — engineered to restore access, ownership & freedom for the underserved.</p>
       
       <div class="hero-buttons">
         <a href="#" class="btn" onclick="showPage('projects')">Explore Our Work</a>
@@ -236,25 +254,21 @@
       </div>
     </div>
     <footer>
-      © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
+      © 2026 KS1 Empire Global Foundation<br>
       Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
     </footer>
   </div>
 
   <!-- ABOUT PAGE -->
   <div id="about" class="page">
-    <div class="back-btn">
-      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
-    </div>
+    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
-        About KS1 Empire Group & Foundation
-      </h1>
+      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">About KS1 Empire Global Foundation</h1>
       <div class="section">
         <div class="about-content">
           <p>
-            <strong style="color: var(--gold);">KS1 Empire Group & Foundation (KS1EGF)</strong> is a registered nonprofit organization founded on a simple but radical belief: 
-            <em>the Fourth Industrial Revolution (4IR) must serve humanity—not control it.</em>
+            <strong style="color: var(--deep-blue);">KS1 Empire Global Foundation (KS1EGF)</strong> is a registered nonprofit organization founded on a simple but radical belief: 
+            <em>the Fourth Industrial Revolution must serve humanity—not control it.</em>
           </p>
           <p>
             We exist to democratize access to transformative technologies—Blockchain, Cryptocurrency, Web3, Big Data, and Artificial Intelligence—so that underserved communities, especially in Africa and the Global South, can reclaim ownership of their data, identity, and economic future.
@@ -268,121 +282,78 @@
         </div>
       </div>
       <div style="margin-top: 1.6rem;">
-        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'd%20like%20to%20learn%20more%20about%20your%20foundation." 
-           target="_blank" class="btn">Message Team KS1EGF</a>
+        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'd%20like%20to%20learn%20more%20about%20your%20foundation." target="_blank" class="btn">Message Team KS1EGF</a>
       </div>
     </div>
     <footer>
-      © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
+      © 2026 KS1 Empire Global Foundation<br>
       Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
     </footer>
   </div>
 
   <!-- MISSION PAGE -->
   <div id="mission" class="page">
-    <div class="back-btn">
-      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
-    </div>
+    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
-        Our Mission
-      </h1>
+      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">Our Mission</h1>
       <div class="section">
         <div class="mission-content">
-          <p>
-            We believe technology should liberate—not control. Our mission is to build and deploy freedom systems rooted in three core principles:
-          </p>
-          <p>
-            <strong class="principle">1. Access</strong><br>
-            Technology must be available to all—regardless of income, connectivity, or geography. We design for low-bandwidth, high-impact use.
-          </p>
-          <p>
-            <strong class="principle">2. Ownership</strong><br>
-            People must own their data, identity, and digital assets. No surveillance. No rent-seeking platforms.
-          </p>
-          <p>
-            <strong class="principle">3. Freedom</strong><br>
-            Tools should empower critical thinking, self-determination, and community resilience—not addiction or manipulation.
-          </p>
-          <p>
-            Through 4IR technologies, we are building a future where digital sovereignty is a universal right.
-          </p>
+          <p>We believe technology should liberate—not control. Our mission is to build and deploy freedom systems rooted in three core principles:</p>
+          <p><strong class="principle">1. Access</strong><br>Technology must be available to all—regardless of income, connectivity, or geography. We design for low-bandwidth, high-impact use.</p>
+          <p><strong class="principle">2. Ownership</strong><br>People must own their data, identity, and digital assets. No surveillance. No rent-seeking platforms.</p>
+          <p><strong class="principle">3. Freedom</strong><br>Tools should empower critical thinking, self-determination, and community resilience—not addiction or manipulation.</p>
+          <p>Through 4IR technologies, we are building a future where digital sovereignty is a universal right.</p>
         </div>
       </div>
       <div style="margin-top: 1.6rem;">
-        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'm%20inspired%20by%20your%20mission.%20How%20can%20I%20contribute?" 
-           target="_blank" class="btn">Support Our Mission</a>
+        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'm%20inspired%20by%20your%20mission.%20How%20can%20I%20contribute?" target="_blank" class="btn">Support Our Mission</a>
       </div>
     </div>
     <footer>
-      © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
+      © 2026 KS1 Empire Global Foundation<br>
       Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
     </footer>
   </div>
 
   <!-- PROJECTS PAGE -->
   <div id="projects" class="page">
-    <div class="back-btn">
-      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
-    </div>
+    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
-        Our Projects
-      </h1>
-
+      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">Our Projects</h1>
       <div class="section">
         <h2>ShineGPT — Flagship Project</h2>
-        <p>
-          An AI-powered knowledge platform delivering uncensored, ethical education via low-data SMS and web — built for communities with restricted access.
-        </p>
+        <p>An AI-powered knowledge platform delivering uncensored, ethical education via low-data SMS and web — built for communities with restricted access.</p>
         <a href="https://shinegpt.pages.dev" target="_blank" class="btn" style="margin-top: 1.4rem;">Visit ShineGPT</a>
       </div>
-      <!-- KS1 Wallet REMOVED -->
     </div>
     <footer>
-      © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
+      © 2026 KS1 Empire Global Foundation<br>
       Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
     </footer>
   </div>
 
   <!-- GET INVOLVED PAGE -->
   <div id="get-involved" class="page">
-    <div class="back-btn">
-      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
-    </div>
+    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
-        Get Involved
-      </h1>
+      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">Get Involved</h1>
       <div class="section">
-        <p>
-          Join our movement to build freedom systems for the next generation.
-        </p>
-        <p>
-          Be among the first to receive updates on ShineGPT and new 4IR tools designed for digital sovereignty.
-        </p>
-        <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">
-          How to stay connected:
-        </p>
-        <p>
-          → Message us on WhatsApp to join our broadcast list<br>
-          → Partner with us on community deployments<br>
-          → Support our mission
-        </p>
+        <p>Join our movement to build freedom systems for the next generation.</p>
+        <p>Be among the first to receive updates on ShineGPT and new 4IR tools designed for digital sovereignty.</p>
+        <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">How to stay connected:</p>
+        <p>→ Message us on WhatsApp to join our broadcast list<br>→ Partner with us on community deployments<br>→ Support our mission</p>
       </div>
       <div style="margin-top: 1.6rem;">
-        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20Please%20add%20me%20to%20your%20project%20updates." 
-           target="_blank" class="btn">Join Our WhatsApp List</a>
+        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20Please%20add%20me%20to%20your%20project%20updates." target="_blank" class="btn">Join Our WhatsApp List</a>
       </div>
     </div>
     <footer>
-      © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
+      © 2026 KS1 Empire Global Foundation<br>
       Building freedom systems through 4IR: Blockchain · Crypto · Web3 · Big Data · AI
     </footer>
   </div>
 
   <script>
-    // Generate falling KS1EGF texts
     function initWatermark() {
       const container = document.getElementById('watermark');
       const count = 12;
