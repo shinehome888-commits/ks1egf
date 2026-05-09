@@ -12,38 +12,43 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
+      --white: #FFFFFF;
       --black: #000000;
       --blue: #1E3A8A;
       --gold: #D4AF37;
-      --white: #FFFFFF;
     }
 
     body {
       font-family: 'Segoe UI', Inter, system-ui, sans-serif;
-      background: var(--black);
-      color: var(--white);
+      background: var(--white);
+      color: var(--black);
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* === BOLD WHITE KS1EGF BACKGROUND === */
-    .watermark {
+    /* === GOLDEN FALLING KS1EGF === */
+    .falling-watermark {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.05;
-      background-image: 
-        linear-gradient(
-          45deg,
-          transparent 48%,
-          rgba(255, 255, 255, 0.1) 48%,
-          rgba(255, 255, 255, 0.1) 52%,
-          transparent 52%
-        ),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' font-size='24' font-weight='800' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 150 150)' opacity='0.15'%3EKS1EGF%3C/text%3E%3C/svg%3E");
-      background-size: 300px 300px;
+    }
+    .falling-text {
+      position: absolute;
+      top: -50px;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gold);
+      opacity: 0.12;
+      animation: fall 12s linear infinite;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.12; }
+      90% { opacity: 0.12; }
+      100% { transform: translateY(100vh) rotate(2deg); opacity: 0; }
     }
 
     .page {
@@ -74,166 +79,143 @@
       padding-top: 4rem;
     }
 
+    /* === REDESIGNED TITLE AREA === */
     .company-name {
-      font-size: 2.1rem;
-      color: var(--blue);
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-      text-shadow: 0 0 12px rgba(30, 58, 138, 0.6);
+      font-size: 2.4rem;
+      color: var(--gold);
+      font-weight: 900;
+      margin-bottom: 0.4rem;
+      text-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
+      letter-spacing: 1px;
     }
     .trust-badge {
-      font-size: 0.95rem;
-      color: #aaa;
+      font-size: 1.0rem;
+      color: var(--blue);
       margin-bottom: 1.2rem;
+      font-weight: 600;
     }
     .headline {
-      font-size: 2.0rem;
-      color: var(--gold);
-      font-weight: 800;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      font-size: 2.6rem;
+      color: var(--black);
+      font-weight: 900;
+      margin-bottom: 1.0rem;
+      letter-spacing: -0.5px;
     }
     .subhead {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-bottom: 1.8rem;
-      max-width: 600px;
+      font-size: 1.2rem;
+      color: var(--black);
+      margin-bottom: 2.0rem;
+      max-width: 650px;
+      font-weight: 500;
     }
 
     .hero-buttons {
-      margin: 0 0 2rem;
+      margin: 0 0 2.2rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.9rem;
+      gap: 1.0rem;
     }
 
     .btn {
       display: inline-block;
-      background: var(--blue);
-      color: var(--white);
-      padding: 0.7rem 1.6rem;
-      border: none;
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.75rem 1.8rem;
+      border: 2px solid var(--gold);
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 800;
       text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 
-        0 4px 12px rgba(30, 58, 138, 0.4),
-        0 0 0 1px rgba(255,255,255,0.05);
-      min-width: 180px;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+      min-width: 190px;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
     }
     .btn:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 
-        0 8px 20px rgba(30, 58, 138, 0.6),
-        0 0 20px rgba(30, 58, 138, 0.3);
-    }
-    .btn:hover::after {
-      transform: translateX(100%);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+      background: var(--white);
     }
 
     .back-btn {
       position: fixed;
-      top: 1.2rem;
-      left: 1.2rem;
+      top: 1.3rem;
+      left: 1.3rem;
       z-index: 1000;
     }
 
     .section {
-      padding: 1.8rem;
-      margin-top: 1.8rem;
+      padding: 2.0rem;
+      margin-top: 2.0rem;
       max-width: 650px;
-      background: rgba(10, 12, 20, 0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
+      background: rgba(250, 250, 250, 0.7);
+      border-radius: 14px;
       position: relative;
-      overflow: hidden;
-      box-shadow: 
-        0 0 0 1px rgba(212, 175, 55, 0.2),
-        0 10px 30px rgba(212, 175, 55, 0.15);
-    }
-    .section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-      z-index: -1;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
     }
     .section h2 {
       color: var(--gold);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       font-weight: 800;
-      text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+      font-size: 1.8rem;
     }
 
     .about-content,
     .mission-content {
       text-align: left;
       line-height: 1.75;
-      color: #ddd;
+      color: var(--black);
     }
     .about-content p,
     .mission-content p {
       margin-bottom: 1.3rem;
+      font-weight: 500;
     }
 
     .principle {
       color: var(--gold);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     footer {
       text-align: center;
-      padding: 1.4rem;
-      color: #888;
-      font-size: 0.88rem;
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      padding: 1.5rem;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
       margin-top: auto;
       width: 100%;
-      backdrop-filter: blur(4px);
     }
 
     @media (max-width: 600px) {
       .page:not(#home) .content-wrapper {
         padding-top: 3.8rem;
       }
-      .hero-buttons { gap: 0.7rem; }
+      .hero-buttons { gap: 0.8rem; }
       .btn {
         width: 100%;
         max-width: 280px;
-        padding: 0.65rem 1.3rem;
-        font-size: 0.98rem;
-        border-radius: 10px;
+        padding: 0.7rem 1.4rem;
+        font-size: 1.0rem;
       }
-      .company-name { font-size: 1.8rem; }
-      .headline { font-size: 1.7rem; }
-      .section { padding: 1.4rem; border-radius: 10px; }
+      .company-name { font-size: 2.0rem; }
+      .headline { font-size: 2.2rem; }
+      .subhead { font-size: 1.1rem; }
+      .section { padding: 1.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BOLD WHITE KS1EGF WATERMARK -->
-  <div class="watermark"></div>
+  <!-- GOLDEN FALLING KS1EGF -->
+  <div class="falling-watermark" id="watermark"></div>
 
   <!-- HOME PAGE -->
   <div id="home" class="page active-page">
     <div class="content-wrapper">
-      <div class="company-name">KS1 Empire Group & Foundation (KS1EGF)</div>
+      <div class="company-name">KS1 Empire Group & Foundation</div>
       <div class="trust-badge">🌍 A nonprofit advancing digital sovereignty through open 4IR innovation.</div>
       <h1 class="headline">Restoring Digital Freedom Through 4IR</h1>
       <p class="subhead">Blockchain · Crypto · AI · Web3 for the underserved</p>
@@ -248,7 +230,7 @@
       <div class="section">
         <h2>Who We Are</h2>
         <p>A nonprofit institution advancing human freedom through ethical innovation in emerging technologies.</p>
-        <p style="margin-top: 1rem; font-style: italic; color: #bbb;">
+        <p style="margin-top: 1rem; font-style: italic; color: #333;">
           In a world of surveillance capitalism and digital exclusion, KS1EGF builds tools that return power to the people.
         </p>
       </div>
@@ -262,10 +244,10 @@
   <!-- ABOUT PAGE -->
   <div id="about" class="page">
     <div class="back-btn">
-      <button class="btn" style="padding:0.45rem 1.1rem;font-size:0.92rem;" onclick="showPage('home')">← Back</button>
+      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
     </div>
     <div class="content-wrapper">
-      <h1 style="color:var(--gold); margin: 0 0 1.6rem; font-weight:800; text-shadow: 0 0 12px rgba(212,175,55,0.4);">
+      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
         About KS1 Empire Group & Foundation
       </h1>
       <div class="section">
@@ -278,7 +260,7 @@
             We exist to democratize access to transformative technologies—Blockchain, Cryptocurrency, Web3, Big Data, and Artificial Intelligence—so that underserved communities, especially in Africa and the Global South, can reclaim ownership of their data, identity, and economic future.
           </p>
           <p>
-            Unlike corporate tech giants, we build freedom systems: open, ethical, and community-governed tools that prioritize human dignity over profit.
+            Unlike corporate tech giants, we build <span style="color: var(--black);">freedom systems</span>: open, ethical, and community-governed tools that prioritize human dignity over profit.
           </p>
           <p>
             <strong style="color: var(--gold);">We Build This For The People</strong>
@@ -299,10 +281,10 @@
   <!-- MISSION PAGE -->
   <div id="mission" class="page">
     <div class="back-btn">
-      <button class="btn" style="padding:0.45rem 1.1rem;font-size:0.92rem;" onclick="showPage('home')">← Back</button>
+      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
     </div>
     <div class="content-wrapper">
-      <h1 style="color:var(--gold); margin: 0 0 1.6rem; font-weight:800; text-shadow: 0 0 12px rgba(212,175,55,0.4);">
+      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
         Our Mission
       </h1>
       <div class="section">
@@ -341,10 +323,10 @@
   <!-- PROJECTS PAGE -->
   <div id="projects" class="page">
     <div class="back-btn">
-      <button class="btn" style="padding:0.45rem 1.1rem;font-size:0.92rem;" onclick="showPage('home')">← Back</button>
+      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
     </div>
     <div class="content-wrapper">
-      <h1 style="color:var(--gold); margin: 0 0 1.6rem; font-weight:800; text-shadow: 0 0 12px rgba(212,175,55,0.4);">
+      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
         Our Projects
       </h1>
 
@@ -353,16 +335,9 @@
         <p>
           An AI-powered knowledge platform delivering uncensored, ethical education via low-data SMS and web — built for communities with restricted access.
         </p>
-        <a href="https://shinegpt.pages.dev" target="_blank" class="btn" style="margin-top: 1.2rem;">Visit ShineGPT</a>
+        <a href="https://shinegpt.pages.dev" target="_blank" class="btn" style="margin-top: 1.4rem;">Visit ShineGPT</a>
       </div>
-
-      <div class="section">
-        <h2>KS1 Wallet</h2>
-        <p>
-          A self-custodial, privacy-first digital wallet for 4IR assets — designed to give users full control over their crypto, identity, and data (ownership).
-        </p>
-        <a href="https://ks1-wallet.pages.dev/" target="_blank" class="btn" style="margin-top: 1.2rem;">Visit KS1 Wallet</a>
-      </div>
+      <!-- KS1 Wallet REMOVED -->
     </div>
     <footer>
       © 2026 KS1 Empire Group & Foundation (KS1EGF)<br>
@@ -373,10 +348,10 @@
   <!-- GET INVOLVED PAGE -->
   <div id="get-involved" class="page">
     <div class="back-btn">
-      <button class="btn" style="padding:0.45rem 1.1rem;font-size:0.92rem;" onclick="showPage('home')">← Back</button>
+      <button class="btn" style="padding:0.5rem 1.2rem;font-size:1.0rem;background:#f0f0f0;color:#000;border:1px solid #ccc;" onclick="showPage('home')">← Back</button>
     </div>
     <div class="content-wrapper">
-      <h1 style="color:var(--gold); margin: 0 0 1.6rem; font-weight:800; text-shadow: 0 0 12px rgba(212,175,55,0.4);">
+      <h1 style="color:var(--black); margin: 0 0 1.6rem; font-weight:900; font-size:2.4rem;">
         Get Involved
       </h1>
       <div class="section">
@@ -384,9 +359,9 @@
           Join our movement to build freedom systems for the next generation.
         </p>
         <p>
-          Be among the first to receive updates on ShineGPT, KS1 Wallet, and new 4IR tools designed for digital sovereignty.
+          Be among the first to receive updates on ShineGPT and new 4IR tools designed for digital sovereignty.
         </p>
-        <p style="margin-top: 1rem; font-weight: 600; color: var(--gold);">
+        <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">
           How to stay connected:
         </p>
         <p>
@@ -407,11 +382,28 @@
   </div>
 
   <script>
+    // Generate falling KS1EGF texts
+    function initWatermark() {
+      const container = document.getElementById('watermark');
+      const count = 12;
+      for (let i = 0; i < count; i++) {
+        const span = document.createElement('div');
+        span.className = 'falling-text';
+        span.textContent = 'KS1EGF';
+        span.style.left = `${Math.random() * 100}%`;
+        span.style.animationDelay = `${Math.random() * 5}s`;
+        span.style.fontSize = `${24 + Math.random() * 8}px`;
+        container.appendChild(span);
+      }
+    }
+
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
       document.getElementById(pageId).classList.add('active-page');
       window.scrollTo(0, 0);
     }
+
+    window.addEventListener('load', initWatermark);
   </script>
 
 </body>
