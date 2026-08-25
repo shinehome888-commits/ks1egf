@@ -78,6 +78,18 @@
         0 3px 0 #050B1C,
         0 4px 8px rgba(0,0,0,0.3),
         0 0 12px var(--gold-glow);
+      overflow: hidden;
+      border-right: 3px solid var(--gold);
+      white-space: nowrap;
+      animation: typeNav 3s steps(14) infinite, blinkNav 0.75s step-end infinite;
+      width: 0;
+    }
+    @keyframes typeNav {
+      0%, 10%, 100% { width: 0; }
+      20%, 90% { width: 7ch; }
+    }
+    @keyframes blinkNav {
+      50% { border-color: transparent; }
     }
     .nav-links {
       display: flex;
@@ -161,21 +173,17 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* === BOLD GOLDEN 3D TITLE WITH FLOAT === */
+    /* === SEQUENTIAL TITLE ANIMATION === */
     .title-container {
       position: relative;
       width: 100%;
       max-width: 600px;
       margin: 0 auto 2rem;
-      animation: floatTitle 4s ease-in-out infinite;
-    }
-    @keyframes floatTitle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
     }
     .semi-arc {
       width: 100%;
       height: 200px;
+      animation: titleFadeOut 4s ease-in-out forwards;
     }
     .semi-arc text {
       font-size: 26px;
@@ -189,6 +197,11 @@
         0 0 18px var(--gold-glow);
       letter-spacing: 1px;
     }
+    @keyframes titleFadeOut {
+      0%, 40% { opacity: 1; transform: translateY(0); }
+      50% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
     .ks1egf-sub {
       font-size: 2.2rem;
       font-weight: 900;
@@ -201,29 +214,63 @@
         0 4px 0 #050B1C,
         0 5px 12px rgba(0,0,0,0.4),
         0 0 18px var(--gold-glow);
+      opacity: 0;
+      animation: subFadeIn 4s ease-in-out forwards;
+      animation-delay: 2s;
+    }
+    @keyframes subFadeIn {
+      0%, 50% { opacity: 0; transform: translateY(10px); }
+      60%, 100% { opacity: 1; transform: translateY(0); }
     }
 
+    /* === DEEP BLUE TEXT + TYPEWRITER === */
+    .trust-badge,
+    .headline,
+    .subhead {
+      color: var(--deep-blue);
+      font-weight: 700;
+    }
     .trust-badge {
       font-size: 1.05rem;
-      color: var(--deep-blue);
       margin-bottom: 1.5rem;
-      font-weight: 700;
       text-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
     .headline {
       font-size: 2.4rem;
-      color: var(--deep-blue);
-      font-weight: 900;
       margin-bottom: 1.2rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.12);
+      overflow: hidden;
+      border-right: 3px solid var(--deep-blue);
+      white-space: nowrap;
+      animation: typeHeadline 4s steps(48) forwards, blink 0.75s step-end infinite;
+      width: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @keyframes typeHeadline {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
     .subhead {
       font-size: 1.15rem;
-      color: var(--black);
       margin-bottom: 2.2rem;
       max-width: 700px;
-      font-weight: 600;
       line-height: 1.5;
+      overflow: hidden;
+      border-right: 3px solid var(--deep-blue);
+      white-space: nowrap;
+      animation: typeSubhead 5s steps(60) forwards, blink 0.75s step-end infinite;
+      width: 0;
+      margin-left: auto;
+      margin-right: auto;
+      animation-delay: 4.5s;
+    }
+    @keyframes typeSubhead {
+      0% { width: 0; }
+      100% { width: 100%; }
     }
 
     .section {
@@ -411,8 +458,8 @@
       .nav-brand { font-size: 1.2rem; }
       .semi-arc text { font-size: 20px; }
       .ks1egf-sub { font-size: 1.8rem; letter-spacing: 3px; }
-      .headline { font-size: 2rem; }
-      .subhead { font-size: 1.05rem; }
+      .headline { font-size: 1.8rem; }
+      .subhead { font-size: 1rem; }
       .float-group { bottom: 1.8rem; right: 1.8rem; }
       .float-btn { width: 58px; height: 58px; }
       .share-modal { bottom: 140px; right: 1.8rem; left: 1.8rem; min-width: auto; }
@@ -607,6 +654,11 @@
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
       document.getElementById(pageId).classList.add('active-page');
+      // Reset animations when page changes
+      const headline = document.getElementById(pageId).querySelector('.headline');
+      const subhead = document.getElementById(pageId).querySelector('.subhead');
+      if(headline) { headline.style.animation = 'none'; headline.offsetHeight; headline.style.animation = null; }
+      if(subhead) { subhead.style.animation = 'none'; subhead.offsetHeight; subhead.style.animation = null; }
       window.scrollTo(0, 0);
     }
 
