@@ -29,7 +29,7 @@
       padding-top: 80px;
     }
 
-    /* === PREMIUM 3D MENU BAR === */
+    /* === PREMIUM HAMBURGER MENU === */
     .navbar {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -38,7 +38,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2.5rem;
+      padding: 0 2rem;
       z-index: 1000;
       border-bottom: var(--gold-line);
       box-shadow: 
@@ -78,51 +78,82 @@
         0 3px 0 #050B1C,
         0 4px 8px rgba(0,0,0,0.3),
         0 0 12px var(--gold-glow);
+      /* Slower, elegant typing animation */
       overflow: hidden;
       border-right: 3px solid var(--gold);
       white-space: nowrap;
-      animation: typeNav 3s steps(14) infinite, blinkNav 0.75s step-end infinite;
+      animation: typeNav 5s steps(14) infinite, blinkNav 0.75s step-end infinite;
       width: 0;
     }
     @keyframes typeNav {
-      0%, 10%, 100% { width: 0; }
-      20%, 90% { width: 7ch; }
+      0%, 15%, 100% { width: 0; }
+      25%, 85% { width: 7ch; }
     }
     @keyframes blinkNav {
       50% { border-color: transparent; }
     }
-    .nav-links {
+    
+    /* Hamburger Menu Button */
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
       display: flex;
-      gap: 1.8rem;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px;
+      z-index: 1001;
     }
-    .nav-links a {
+    .menu-toggle span {
+      width: 28px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px var(--gold-glow);
+    }
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    
+    /* Nav Links Overlay */
+    .nav-overlay {
+      position: fixed;
+      top: 80px; right: 0;
+      width: 280px;
+      height: calc(100vh - 80px);
+      background: linear-gradient(135deg, var(--deep-blue), #1a2a5c);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+      z-index: 999;
+      border-left: var(--gold-line);
+      box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    }
+    .nav-overlay.active {
+      transform: translateX(0);
+    }
+    .nav-overlay a {
       color: var(--white);
       text-decoration: none;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 0.5rem 0.8rem;
+      font-size: 1.1rem;
+      padding: 0.8rem 1rem;
       border-radius: 8px;
       transition: all 0.3s ease;
       cursor: pointer;
-      position: relative;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      border-left: 3px solid transparent;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 50%;
-      width: 0; height: 2px;
-      background: var(--gold);
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-    .nav-links a:hover {
+    .nav-overlay a:hover {
       color: var(--gold);
-      transform: translateY(-2px);
+      background: rgba(255,255,255,0.05);
+      border-left-color: var(--gold);
       text-shadow: 0 0 10px var(--gold-glow);
-    }
-    .nav-links a:hover::after {
-      width: 80%;
+      transform: translateX(5px);
     }
 
     /* === FALLING WATERMARK === */
@@ -166,29 +197,20 @@
       align-items: center;
       padding: 2rem 1.5rem;
       text-align: center;
-      animation: fadeIn 0.6s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* === SEQUENTIAL TITLE ANIMATION === */
+    /* === BOLD STRAIGHT-LINE TITLE === */
     .title-container {
       position: relative;
       width: 100%;
       max-width: 600px;
       margin: 0 auto 2rem;
     }
-    .semi-arc {
-      width: 100%;
-      height: 200px;
-      animation: titleFadeOut 4s ease-in-out forwards;
-    }
-    .semi-arc text {
-      font-size: 26px;
+    .main-title {
+      font-size: 2.4rem;
       font-weight: 900;
-      fill: var(--gold);
+      color: var(--gold);
+      margin-bottom: 0.5rem;
       text-shadow: 
         0 2px 0 #050B1C,
         0 3px 0 #050B1C,
@@ -197,16 +219,10 @@
         0 0 18px var(--gold-glow);
       letter-spacing: 1px;
     }
-    @keyframes titleFadeOut {
-      0%, 40% { opacity: 1; transform: translateY(0); }
-      50% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 0; transform: translateY(-10px); }
-    }
     .ks1egf-sub {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 900;
       color: var(--gold);
-      margin-top: 1rem;
       letter-spacing: 4px;
       text-shadow: 
         0 2px 0 #050B1C,
@@ -214,63 +230,50 @@
         0 4px 0 #050B1C,
         0 5px 12px rgba(0,0,0,0.4),
         0 0 18px var(--gold-glow);
-      opacity: 0;
-      animation: subFadeIn 4s ease-in-out forwards;
-      animation-delay: 2s;
-    }
-    @keyframes subFadeIn {
-      0%, 50% { opacity: 0; transform: translateY(10px); }
-      60%, 100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* === DEEP BLUE TEXT + TYPEWRITER === */
+    /* === CONVERGING CONTENT ANIMATION === */
     .trust-badge,
     .headline,
     .subhead {
       color: var(--deep-blue);
       font-weight: 700;
+      opacity: 0;
+      transform: scale(0.8);
     }
     .trust-badge {
       font-size: 1.05rem;
       margin-bottom: 1.5rem;
+      animation: convergeIn 0.8s ease-out forwards;
+      animation-delay: 0.3s;
       text-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
     .headline {
       font-size: 2.4rem;
       margin-bottom: 1.2rem;
+      animation: convergeIn 0.8s ease-out forwards;
+      animation-delay: 0.6s;
       text-shadow: 0 2px 4px rgba(0,0,0,0.12);
-      overflow: hidden;
-      border-right: 3px solid var(--deep-blue);
-      white-space: nowrap;
-      animation: typeHeadline 4s steps(48) forwards, blink 0.75s step-end infinite;
-      width: 0;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    @keyframes typeHeadline {
-      0% { width: 0; }
-      100% { width: 100%; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
     }
     .subhead {
       font-size: 1.15rem;
       margin-bottom: 2.2rem;
       max-width: 700px;
       line-height: 1.5;
-      overflow: hidden;
-      border-right: 3px solid var(--deep-blue);
-      white-space: nowrap;
-      animation: typeSubhead 5s steps(60) forwards, blink 0.75s step-end infinite;
-      width: 0;
-      margin-left: auto;
-      margin-right: auto;
-      animation-delay: 4.5s;
+      animation: convergeIn 0.8s ease-out forwards;
+      animation-delay: 0.9s;
     }
-    @keyframes typeSubhead {
-      0% { width: 0; }
-      100% { width: 100%; }
+    @keyframes convergeIn {
+      0% { 
+        opacity: 0; 
+        transform: scale(0.8) translateY(20px);
+        filter: blur(4px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+      }
     }
 
     .section {
@@ -452,12 +455,11 @@
 
     @media (max-width: 768px) {
       .navbar { padding: 0 1.2rem; height: 70px; }
-      .nav-links { gap: 0.9rem; }
-      .nav-links a { font-size: 0.9rem; padding: 0.4rem 0.6rem; }
       .logo-icon { width: 42px; height: 42px; }
       .nav-brand { font-size: 1.2rem; }
-      .semi-arc text { font-size: 20px; }
-      .ks1egf-sub { font-size: 1.8rem; letter-spacing: 3px; }
+      .nav-overlay { width: 100%; }
+      .main-title { font-size: 2rem; }
+      .ks1egf-sub { font-size: 1.6rem; letter-spacing: 3px; }
       .headline { font-size: 1.8rem; }
       .subhead { font-size: 1rem; }
       .float-group { bottom: 1.8rem; right: 1.8rem; }
@@ -469,7 +471,7 @@
 </head>
 <body>
 
-  <!-- PREMIUM 3D MENU BAR -->
+  <!-- PREMIUM MENU BAR WITH HAMBURGER -->
   <nav class="navbar">
     <div class="nav-logo-area">
       <a href="#" class="logo-icon" title="KS1 Empire Global Foundation">
@@ -477,14 +479,21 @@
       </a>
       <span class="nav-brand">KS1EGF</span>
     </div>
-    <div class="nav-links">
-      <a onclick="showPage('home')">Home</a>
-      <a onclick="showPage('about')">About</a>
-      <a onclick="showPage('mission')">Mission</a>
-      <a onclick="showPage('projects')">Projects</a>
-      <a onclick="showPage('get-involved')">Get Involved</a>
-    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- NAV OVERLAY (HIDDEN BY DEFAULT) -->
+  <div class="nav-overlay" id="navOverlay">
+    <a onclick="showPage('home'); toggleMenu()">Home</a>
+    <a onclick="showPage('about'); toggleMenu()">About</a>
+    <a onclick="showPage('mission'); toggleMenu()">Mission</a>
+    <a onclick="showPage('projects'); toggleMenu()">Projects</a>
+    <a onclick="showPage('get-involved'); toggleMenu()">Get Involved</a>
+  </div>
 
   <!-- FALLING KS1EGF WATERMARK -->
   <div class="falling-watermark" id="watermark"></div>
@@ -522,14 +531,7 @@
   <div id="home" class="page active-page">
     <div class="content-wrapper">
       <div class="title-container">
-        <svg class="semi-arc" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <path id="arc" d="M 50 180 Q 300 -20 550 180" fill="none"/>
-          </defs>
-          <text>
-            <textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath>
-          </text>
-        </svg>
+        <div class="main-title">KS1 Empire Global Foundation</div>
         <div class="ks1egf-sub">(KS1EGF)</div>
       </div>
       <div class="trust-badge">🌍 A registered nonprofit advancing digital inclusion, ethical innovation, and community empowerment.</div>
@@ -554,10 +556,7 @@
   <div id="about" class="page">
     <div class="content-wrapper">
       <div class="title-container">
-        <svg class="semi-arc" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-          <defs><path id="arc" d="M 50 180 Q 300 -20 550 180" fill="none"/></defs>
-          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
-        </svg>
+        <div class="main-title">KS1 Empire Global Foundation</div>
         <div class="ks1egf-sub">(KS1EGF)</div>
       </div>
       <div class="section">
@@ -577,10 +576,7 @@
   <div id="mission" class="page">
     <div class="content-wrapper">
       <div class="title-container">
-        <svg class="semi-arc" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-          <defs><path id="arc" d="M 50 180 Q 300 -20 550 180" fill="none"/></defs>
-          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
-        </svg>
+        <div class="main-title">KS1 Empire Global Foundation</div>
         <div class="ks1egf-sub">(KS1EGF)</div>
       </div>
       <div class="section">
@@ -601,10 +597,7 @@
   <div id="projects" class="page">
     <div class="content-wrapper">
       <div class="title-container">
-        <svg class="semi-arc" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-          <defs><path id="arc" d="M 50 180 Q 300 -20 550 180" fill="none"/></defs>
-          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
-        </svg>
+        <div class="main-title">KS1 Empire Global Foundation</div>
         <div class="ks1egf-sub">(KS1EGF)</div>
       </div>
       <div class="section">
@@ -620,10 +613,7 @@
   <div id="get-involved" class="page">
     <div class="content-wrapper">
       <div class="title-container">
-        <svg class="semi-arc" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-          <defs><path id="arc" d="M 50 180 Q 300 -20 550 180" fill="none"/></defs>
-          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
-        </svg>
+        <div class="main-title">KS1 Empire Global Foundation</div>
         <div class="ks1egf-sub">(KS1EGF)</div>
       </div>
       <div class="section">
@@ -638,6 +628,7 @@
   </div>
 
   <script>
+    // Generate falling KS1EGF texts
     function initWatermark() {
       const container = document.getElementById('watermark');
       for (let i = 0; i < 12; i++) {
@@ -651,17 +642,32 @@
       }
     }
 
+    // Page navigation
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
       document.getElementById(pageId).classList.add('active-page');
-      // Reset animations when page changes
-      const headline = document.getElementById(pageId).querySelector('.headline');
-      const subhead = document.getElementById(pageId).querySelector('.subhead');
-      if(headline) { headline.style.animation = 'none'; headline.offsetHeight; headline.style.animation = null; }
-      if(subhead) { subhead.style.animation = 'none'; subhead.offsetHeight; subhead.style.animation = null; }
       window.scrollTo(0, 0);
     }
 
+    // Hamburger menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navOverlay = document.getElementById('navOverlay');
+    
+    function toggleMenu() {
+      menuToggle.classList.toggle('active');
+      navOverlay.classList.toggle('active');
+    }
+    
+    menuToggle.addEventListener('click', toggleMenu);
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navOverlay.contains(e.target) && !menuToggle.contains(e.target) && navOverlay.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+
+    // Share functionality
     const shareBtn = document.getElementById('shareBtn');
     const shareModal = document.getElementById('shareModal');
     const shareClose = document.getElementById('shareClose');
