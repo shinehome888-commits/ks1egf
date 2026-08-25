@@ -14,8 +14,9 @@
     :root {
       --white: #FFFFFF;
       --black: #000000;
-      --deep-blue: #1E3A8A;
+      --deep-blue: #0B1D3A;
       --gold: #D4AF37;
+      --gold-glow: rgba(212, 175, 55, 0.6);
     }
 
     body {
@@ -24,10 +25,67 @@
       color: var(--black);
       line-height: 1.6;
       overflow-x: hidden;
-      position: relative;
+      padding-top: 70px;
     }
 
-    /* === GOLDEN FALLING KS1EGF === */
+    /* === TOP MENU BAR === */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      height: 70px;
+      background: var(--deep-blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .nav-logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--gold), #b8860b);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: var(--deep-blue);
+      font-size: 0.9rem;
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+    .nav-brand {
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    /* === FALLING WATERMARK === */
     .falling-watermark {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -42,7 +100,7 @@
       color: var(--gold);
       opacity: 0.2;
       animation: fall 12s linear infinite;
-      text-shadow: 0 0 14px rgba(212, 175, 55, 0.6);
+      text-shadow: 0 0 14px var(--gold-glow);
     }
     @keyframes fall {
       0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
@@ -53,7 +111,7 @@
 
     .page {
       display: none;
-      min-height: 100vh;
+      min-height: calc(100vh - 140px);
       position: relative;
       z-index: 2;
     }
@@ -61,12 +119,12 @@
       display: block;
     }
     .content-wrapper {
-      min-height: 100vh;
+      min-height: calc(100vh - 140px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0 1.5rem;
+      padding: 2rem 1.5rem;
       text-align: center;
       animation: fadeIn 0.6s ease-out;
     }
@@ -75,87 +133,62 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .page:not(#home) .content-wrapper {
-      padding-top: 4rem;
+    /* === SEMI-CIRCLE TITLE + 3D === */
+    .title-container {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+    }
+    .semi-arc {
+      width: 100%;
+      height: 180px;
+    }
+    .semi-arc text {
+      font-size: 22px;
+      font-weight: 900;
+      fill: var(--deep-blue);
+      text-shadow: 
+        0 1px 0 #050B1C,
+        0 2px 0 #050B1C,
+        0 3px 0 #050B1C,
+        0 4px 6px rgba(0,0,0,0.25),
+        0 0 12px var(--gold-glow);
+    }
+    .ks1egf-sub {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--deep-blue);
+      margin-top: 0.8rem;
+      letter-spacing: 2px;
+      text-shadow: 
+        0 1px 0 #050B1C,
+        0 2px 0 #050B1C,
+        0 3px 0 #050B1C,
+        0 4px 6px rgba(0,0,0,0.25),
+        0 0 12px var(--gold-glow);
     }
 
-    .company-name {
-      font-size: 2.5rem;
-      color: var(--deep-blue);
-      font-weight: 900;
-      margin-bottom: 0.4rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
-      letter-spacing: 1px;
-    }
     .trust-badge {
       font-size: 1.0rem;
       color: var(--deep-blue);
       margin-bottom: 1.2rem;
       font-weight: 600;
     }
-
     .headline {
-      font-size: 2.6rem;
+      font-size: 2.2rem;
       color: var(--deep-blue);
       font-weight: 900;
       margin-bottom: 1.0rem;
-      letter-spacing: -0.5px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.12);
     }
     .subhead {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--black);
       margin-bottom: 2.0rem;
       max-width: 700px;
       font-weight: 500;
       line-height: 1.5;
-    }
-
-    .hero-buttons {
-      margin: 0 0 2.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.0rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--deep-blue);
-      color: var(--white);
-      padding: 0.75rem 1.8rem;
-      border: 2px solid var(--deep-blue);
-      border-radius: 8px;
-      font-weight: 800;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
-      min-width: 190px;
-      font-size: 1.05rem;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 6px 16px rgba(30, 58, 138, 0.4), 0 0 14px rgba(212, 175, 55, 0.4);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .back-btn {
-      position: fixed;
-      top: 1.3rem;
-      left: 1.3rem;
-      z-index: 1000;
-    }
-    .back-btn .btn {
-      background: #f4f4f4;
-      border-color: #ccc;
-      color: var(--black);
-      font-weight: 700;
-      min-width: auto;
-      padding: 0.5rem 1.2rem;
-      font-size: 1.0rem;
     }
 
     .section {
@@ -186,55 +219,65 @@
       margin-bottom: 1.3rem;
       font-weight: 500;
     }
-
     .principle {
       color: var(--gold);
       font-weight: 800;
     }
 
+    /* === DEEP BLUE FOOTER === */
     footer {
+      background: var(--deep-blue);
+      padding: 2rem 1.5rem;
       text-align: center;
-      padding: 1.5rem;
-      color: #666;
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(30, 58, 138, 0.15);
-      margin-top: auto;
-      width: 100%;
+      color: var(--white);
+      font-size: 0.95rem;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.2);
+    }
+    footer p:first-child {
+      font-weight: 800;
+      color: var(--gold);
+      text-shadow: 0 0 10px var(--gold-glow);
+      margin-bottom: 0.5rem;
+    }
+    footer p:last-child {
+      color: #e0e0e0;
+      text-shadow: 0 0 6px rgba(255,255,255,0.15);
     }
 
-    /* === FLOATING SHARE BUTTON === */
-    .share-float-btn {
+    /* === FLOATING BUTTONS === */
+    .float-group {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       z-index: 1000;
-      background: var(--gold);
-      color: var(--black);
-      width: 60px;
-      height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .float-btn {
+      width: 60px; height: 60px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
       transition: all 0.3s ease;
-      border: 2px solid var(--gold);
+      border: 2px solid transparent;
     }
-    .share-float-btn:hover {
-      transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
-    }
-    .share-float-btn svg {
-      width: 28px;
-      height: 28px;
-      fill: currentColor;
-    }
+    .float-btn:hover { transform: scale(1.1); }
+    .float-btn.whatsapp { background: #25D366; color: white; border-color: #20B054; }
+    .float-btn.whatsapp:hover { box-shadow: 0 0 18px rgba(37, 211, 102, 0.5); }
+    .float-btn.share { background: var(--gold); color: var(--black); border-color: #b8860b; }
+    .float-btn.share:hover { box-shadow: 0 0 18px var(--gold-glow); }
+    .float-btn svg { width: 28px; height: 28px; fill: currentColor; }
 
     /* === SHARE MODAL === */
     .share-modal {
       position: fixed;
-      bottom: 90px;
+      bottom: 150px;
       right: 2rem;
       background: var(--white);
       border-radius: 16px;
@@ -278,9 +321,7 @@
       font-weight: 600;
       font-size: 0.95rem;
     }
-    .share-option:hover {
-      transform: translateX(5px);
-    }
+    .share-option:hover { transform: translateX(5px); }
     .share-option.whatsapp { background: #25D366; color: white; }
     .share-option.twitter { background: #1DA1F2; color: white; }
     .share-option.facebook { background: #1877F2; color: white; }
@@ -292,79 +333,61 @@
     }
     .share-option.tiktok { background: #000000; color: white; }
     .share-option.copy { background: var(--deep-blue); color: white; }
-    
-    .share-option svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
+    .share-option svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
     .share-close {
-      position: absolute;
-      top: 0.8rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--deep-blue);
-      line-height: 1;
+      position: absolute; top: 0.8rem; right: 1rem;
+      background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--deep-blue);
     }
 
-    /* Toast notification */
     .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: var(--deep-blue);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 600;
-      z-index: 1002;
-      opacity: 0;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--deep-blue); color: white; padding: 0.8rem 1.5rem; border-radius: 8px;
+      font-weight: 600; z-index: 1002; opacity: 0; transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    @media (max-width: 600px) {
-      .page:not(#home) .content-wrapper { padding-top: 3.8rem; }
-      .hero-buttons { gap: 0.8rem; }
-      .btn { width: 100%; max-width: 280px; padding: 0.7rem 1.4rem; font-size: 1.0rem; }
-      .company-name { font-size: 2.0rem; }
-      .headline { font-size: 2.1rem; }
-      .subhead { font-size: 1.05rem; }
-      .section { padding: 1.6rem; }
-      .share-float-btn {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 55px;
-        height: 55px;
-      }
-      .share-modal {
-        bottom: 80px;
-        right: 1.5rem;
-        left: 1.5rem;
-        min-width: auto;
-      }
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1rem; }
+      .nav-links { gap: 0.8rem; }
+      .nav-links a { font-size: 0.85rem; padding: 0.3rem 0.5rem; }
+      .semi-arc text { font-size: 16px; }
+      .ks1egf-sub { font-size: 1.4rem; }
+      .headline { font-size: 1.8rem; }
+      .float-group { bottom: 1.5rem; right: 1.5rem; }
+      .float-btn { width: 54px; height: 54px; }
+      .share-modal { bottom: 130px; right: 1.5rem; left: 1.5rem; min-width: auto; }
     }
   </style>
 </head>
 <body>
 
-  <!-- GOLDEN FALLING KS1EGF -->
+  <!-- TOP MENU BAR -->
+  <nav class="navbar">
+    <div class="nav-logo-area">
+      <div class="logo-icon">KS1</div>
+      <span class="nav-brand">KS1EGF</span>
+    </div>
+    <div class="nav-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About</a>
+      <a onclick="showPage('mission')">Mission</a>
+      <a onclick="showPage('projects')">Projects</a>
+      <a onclick="showPage('get-involved')">Get Involved</a>
+    </div>
+  </nav>
+
+  <!-- FALLING KS1EGF -->
   <div class="falling-watermark" id="watermark"></div>
 
-  <!-- FLOATING SHARE BUTTON -->
-  <div class="share-float-btn" id="shareBtn" title="Share this site">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
-    </svg>
+  <!-- FLOATING BUTTONS -->
+  <div class="float-group">
+    <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'd%20like%20to%20connect." target="_blank" class="float-btn whatsapp" title="Chat with Team KS1EGF">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+    </a>
+    <div class="float-btn share" id="shareBtn" title="Share this site">
+      <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+    </div>
   </div>
 
   <!-- SHARE MODAL -->
@@ -372,58 +395,37 @@
     <button class="share-close" id="shareClose">&times;</button>
     <h3>Share KS1EGF</h3>
     <div class="share-options">
-      <div class="share-option whatsapp" onclick="shareTo('whatsapp')">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-        WhatsApp
-      </div>
-      <div class="share-option twitter" onclick="shareTo('twitter')">
-        <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-        Twitter / X
-      </div>
-      <div class="share-option facebook" onclick="shareTo('facebook')">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        Facebook
-      </div>
-      <div class="share-option linkedin" onclick="shareTo('linkedin')">
-        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </div>
-      <div class="share-option telegram" onclick="shareTo('telegram')">
-        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-        Telegram
-      </div>
-      <div class="share-option instagram" onclick="shareTo('instagram')">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        Instagram
-      </div>
-      <div class="share-option tiktok" onclick="shareTo('tiktok')">
-        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-        TikTok
-      </div>
-      <div class="share-option copy" onclick="copyLink()">
-        <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-        Copy Link
-      </div>
+      <div class="share-option whatsapp" onclick="shareTo('whatsapp')">WhatsApp</div>
+      <div class="share-option twitter" onclick="shareTo('twitter')">Twitter / X</div>
+      <div class="share-option facebook" onclick="shareTo('facebook')">Facebook</div>
+      <div class="share-option linkedin" onclick="shareTo('linkedin')">LinkedIn</div>
+      <div class="share-option telegram" onclick="shareTo('telegram')">Telegram</div>
+      <div class="share-option instagram" onclick="shareTo('instagram')">Instagram</div>
+      <div class="share-option tiktok" onclick="shareTo('tiktok')">TikTok</div>
+      <div class="share-option copy" onclick="copyLink()">Copy Link</div>
     </div>
   </div>
 
-  <!-- TOAST NOTIFICATION -->
+  <!-- TOAST -->
   <div class="toast" id="toast">Link copied to clipboard!</div>
 
   <!-- HOME PAGE -->
   <div id="home" class="page active-page">
     <div class="content-wrapper">
-      <div class="company-name">KS1 Empire Global Foundation</div>
+      <div class="title-container">
+        <svg class="semi-arc" viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <path id="arc" d="M 40 160 Q 250 -40 460 160" fill="none"/>
+          </defs>
+          <text>
+            <textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath>
+          </text>
+        </svg>
+        <div class="ks1egf-sub">(KS1EGF)</div>
+      </div>
       <div class="trust-badge">🌍 A registered nonprofit advancing digital inclusion, ethical innovation, and community empowerment.</div>
       <h1 class="headline">Empowering Communities Through Ethical Digital Innovation</h1>
       <p class="subhead">Digital Literacy · Secure Systems · Data Empowerment · Community Resilience</p>
-      
-      <div class="hero-buttons">
-        <a href="#" class="btn" onclick="showPage('projects')">Explore Our Work</a>
-        <a href="#" class="btn" onclick="showPage('about')">Learn About KS1EGF</a>
-        <a href="#" class="btn" onclick="showPage('mission')">Our Mission</a>
-        <a href="#" class="btn" onclick="showPage('get-involved')">Get Involved</a>
-      </div>
       
       <div class="section">
         <h2>Who We Are</h2>
@@ -434,111 +436,102 @@
       </div>
     </div>
     <footer>
-      © 2026 KS1 Empire Global Foundation (KS1EGF)<br>
-      Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.
+      <p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p>
+      <p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p>
     </footer>
   </div>
 
   <!-- ABOUT PAGE -->
   <div id="about" class="page">
-    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">About KS1 Empire Global Foundation</h1>
+      <div class="title-container">
+        <svg class="semi-arc" viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+          <defs><path id="arc" d="M 40 160 Q 250 -40 460 160" fill="none"/></defs>
+          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
+        </svg>
+        <div class="ks1egf-sub">(KS1EGF)</div>
+      </div>
       <div class="section">
+        <h2>About Us</h2>
         <div class="about-content">
-          <p>
-            <strong style="color: var(--deep-blue);">KS1 Empire Global Foundation (KS1EGF)</strong> is a registered nonprofit organization founded on a simple belief: 
-            <em>technology must serve humanity with transparency, ethics, and accessibility at its core.</em>
-          </p>
-          <p>
-            We exist to bridge the digital divide by delivering secure tools, digital literacy programs, and community-centered learning platforms to underserved populations across Africa and the Global South.
-          </p>
-          <p>
-            Unlike corporate tech models, we build open, ethical, and community-governed systems that prioritize human dignity, lifelong learning, and sustainable progress.
-          </p>
-          <p>
-            <strong style="color: var(--gold);">We Build This For The People</strong>
-          </p>
+          <p><strong>KS1 Empire Global Foundation (KS1EGF)</strong> is a registered nonprofit organization founded on a simple belief: <em>technology must serve humanity with transparency, ethics, and accessibility at its core.</em></p>
+          <p>We exist to bridge the digital divide by delivering secure tools, digital literacy programs, and community-centered learning platforms to underserved populations across Africa and the Global South.</p>
+          <p>Unlike corporate tech models, we build open, ethical, and community-governed systems that prioritize human dignity, lifelong learning, and sustainable progress.</p>
+          <p style="color: var(--gold); font-weight: 800; margin-top: 1rem;">We Build This For The People</p>
         </div>
       </div>
-      <div style="margin-top: 1.6rem;">
-        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'd%20like%20to%20learn%20more%20about%20your%20digital%20inclusion%20work." target="_blank" class="btn">Message Team KS1EGF</a>
-      </div>
     </div>
-    <footer>
-      © 2026 KS1 Empire Global Foundation (KS1EGF)<br>
-      Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.
-    </footer>
+    <footer><p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p><p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p></footer>
   </div>
 
   <!-- MISSION PAGE -->
   <div id="mission" class="page">
-    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">Our Mission</h1>
+      <div class="title-container">
+        <svg class="semi-arc" viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+          <defs><path id="arc" d="M 40 160 Q 250 -40 460 160" fill="none"/></defs>
+          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
+        </svg>
+        <div class="ks1egf-sub">(KS1EGF)</div>
+      </div>
       <div class="section">
+        <h2>Our Mission</h2>
         <div class="mission-content">
           <p>We believe technology should empower—not exclude. Our mission is to build and deploy secure digital tools rooted in three core principles:</p>
-          <p><strong class="principle">1. Access</strong><br>Digital tools and learning resources must be available to all—regardless of income, connectivity, or location. We design for low-bandwidth, high-impact use.</p>
-          <p><strong class="principle">2. Ownership</strong><br>Communities must control their data, identity, and digital footprint. We promote secure, transparent, and user-centered systems.</p>
-          <p><strong class="principle">3. Empowerment</strong><br>Technology should foster critical thinking, self-reliance, and community resilience—not dependency or exploitation.</p>
+          <p><strong class="principle">1. Access</strong><br>Digital tools and learning resources must be available to all—regardless of income, connectivity, or location.</p>
+          <p><strong class="principle">2. Ownership</strong><br>Communities must control their data, identity, and digital footprint.</p>
+          <p><strong class="principle">3. Empowerment</strong><br>Technology should foster critical thinking, self-reliance, and community resilience.</p>
           <p>Through ethical innovation and digital literacy, we are building a future where technology serves as a bridge to opportunity and dignity for all.</p>
         </div>
       </div>
-      <div style="margin-top: 1.6rem;">
-        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'm%20inspired%20by%20your%20digital%20inclusion%20mission.%20How%20can%20I%20support?" target="_blank" class="btn">Support Our Mission</a>
-      </div>
     </div>
-    <footer>
-      © 2026 KS1 Empire Global Foundation (KS1EGF)<br>
-      Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.
-    </footer>
+    <footer><p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p><p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p></footer>
   </div>
 
   <!-- PROJECTS PAGE -->
   <div id="projects" class="page">
-    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">Our Projects</h1>
+      <div class="title-container">
+        <svg class="semi-arc" viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+          <defs><path id="arc" d="M 40 160 Q 250 -40 460 160" fill="none"/></defs>
+          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
+        </svg>
+        <div class="ks1egf-sub">(KS1EGF)</div>
+      </div>
       <div class="section">
         <h2>ShineGPT — Flagship Project</h2>
         <p>An AI-powered learning platform designed to deliver accessible, ethical education and digital skills to communities with limited resources.</p>
-        <a href="https://shinegpt.pages.dev" target="_blank" class="btn" style="margin-top: 1.4rem;">Visit ShineGPT</a>
+        <a href="https://shinegpt.pages.dev" target="_blank" style="display:inline-block; margin-top:1rem; padding:0.6rem 1.4rem; background:var(--deep-blue); color:white; border-radius:6px; text-decoration:none; font-weight:600;">Visit ShineGPT</a>
       </div>
     </div>
-    <footer>
-      © 2026 KS1 Empire Global Foundation (KS1EGF)<br>
-      Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.
-    </footer>
+    <footer><p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p><p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p></footer>
   </div>
 
   <!-- GET INVOLVED PAGE -->
   <div id="get-involved" class="page">
-    <div class="back-btn"><button class="btn" onclick="showPage('home')">← Back</button></div>
     <div class="content-wrapper">
-      <h1 class="company-name" style="font-size:2.2rem; margin-bottom:1.5rem;">Get Involved</h1>
+      <div class="title-container">
+        <svg class="semi-arc" viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+          <defs><path id="arc" d="M 40 160 Q 250 -40 460 160" fill="none"/></defs>
+          <text><textPath href="#arc" text-anchor="middle" startOffset="50%">KS1 Empire Global Foundation</textPath></text>
+        </svg>
+        <div class="ks1egf-sub">(KS1EGF)</div>
+      </div>
       <div class="section">
-        <p>Join our movement to build inclusive digital futures for the next generation.</p>
-        <p>Be among the first to receive updates on ShineGPT and new community-driven learning tools designed for digital empowerment.</p>
+        <h2>Get Involved</h2>
+        <p>Join our movement to build inclusive digital futures for the next generation. Be among the first to receive updates on ShineGPT and new community-driven learning tools.</p>
         <p style="margin-top: 1rem; font-weight: 700; color: var(--gold);">How to stay connected:</p>
         <p>→ Message us on WhatsApp to join our community updates<br>→ Partner with us on local digital literacy initiatives<br>→ Support our mission</p>
-      </div>
-      <div style="margin-top: 1.6rem;">
-        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20Please%20add%20me%20to%20your%20community%20updates." target="_blank" class="btn">Join Our WhatsApp List</a>
+        <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20Please%20add%20me%20to%20your%20community%20updates." target="_blank" style="display:inline-block; margin-top:1rem; padding:0.6rem 1.4rem; background:var(--deep-blue); color:white; border-radius:6px; text-decoration:none; font-weight:600;">Join Our WhatsApp List</a>
       </div>
     </div>
-    <footer>
-      © 2026 KS1 Empire Global Foundation (KS1EGF)<br>
-      Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.
-    </footer>
+    <footer><p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p><p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p></footer>
   </div>
 
   <script>
-    // Generate falling KS1EGF texts
     function initWatermark() {
       const container = document.getElementById('watermark');
-      const count = 12;
-      for (let i = 0; i < count; i++) {
+      for (let i = 0; i < 12; i++) {
         const span = document.createElement('div');
         span.className = 'falling-text';
         span.textContent = 'KS1EGF';
@@ -555,89 +548,44 @@
       window.scrollTo(0, 0);
     }
 
-    // Share functionality
     const shareBtn = document.getElementById('shareBtn');
     const shareModal = document.getElementById('shareModal');
     const shareClose = document.getElementById('shareClose');
     const toast = document.getElementById('toast');
     const siteUrl = window.location.href;
-    const siteTitle = 'KS1 Empire Global Foundation';
-    const siteDesc = 'Empowering communities through ethical digital innovation, secure systems, and lifelong learning.';
 
-    shareBtn.addEventListener('click', () => {
-      shareModal.classList.toggle('active');
-    });
-
-    shareClose.addEventListener('click', () => {
-      shareModal.classList.remove('active');
-    });
-
+    shareBtn.addEventListener('click', () => shareModal.classList.toggle('active'));
+    shareClose.addEventListener('click', () => shareModal.classList.remove('active'));
     document.addEventListener('click', (e) => {
-      if (!shareModal.contains(e.target) && !shareBtn.contains(e.target)) {
-        shareModal.classList.remove('active');
-      }
+      if (!shareModal.contains(e.target) && !shareBtn.contains(e.target)) shareModal.classList.remove('active');
     });
 
     function shareTo(platform) {
-      const encodedUrl = encodeURIComponent(siteUrl);
-      const encodedTitle = encodeURIComponent(siteTitle);
-      const encodedDesc = encodeURIComponent(siteDesc);
-      
-      let shareUrl = '';
-      
-      switch(platform) {
-        case 'whatsapp':
-          shareUrl = `https://wa.me/?text=${encodedTitle}%20${encodedDesc}%20${encodedUrl}`;
-          break;
-        case 'twitter':
-          shareUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
-          break;
-        case 'facebook':
-          shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-          break;
-        case 'linkedin':
-          shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
-          break;
-        case 'telegram':
-          shareUrl = `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`;
-          break;
-        case 'instagram':
-          window.open('https://www.instagram.com/', '_blank');
-          shareModal.classList.remove('active');
-          return;
-        case 'tiktok':
-          window.open('https://www.tiktok.com/', '_blank');
-          shareModal.classList.remove('active');
-          return;
-      }
-      
-      if (shareUrl) {
-        window.open(shareUrl, '_blank', 'width=600,height=400');
-        shareModal.classList.remove('active');
-      }
+      const url = encodeURIComponent(siteUrl);
+      const title = encodeURIComponent('KS1 Empire Global Foundation');
+      const desc = encodeURIComponent('Empowering communities through ethical digital innovation.');
+      let link = '';
+      if(platform==='whatsapp') link=`https://wa.me/?text=${title}%20${desc}%20${url}`;
+      else if(platform==='twitter') link=`https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+      else if(platform==='facebook') link=`https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      else if(platform==='linkedin') link=`https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+      else if(platform==='telegram') link=`https://t.me/share/url?url=${url}&text=${title}`;
+      else if(platform==='instagram') { window.open('https://www.instagram.com/', '_blank'); shareModal.classList.remove('active'); return; }
+      else if(platform==='tiktok') { window.open('https://www.tiktok.com/', '_blank'); shareModal.classList.remove('active'); return; }
+      if(link) window.open(link, '_blank', 'width=600,height=400');
+      shareModal.classList.remove('active');
     }
 
     function copyLink() {
       navigator.clipboard.writeText(siteUrl).then(() => {
-        showToast();
+        toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 3000);
         shareModal.classList.remove('active');
-      }).catch(() => {
-        const textArea = document.createElement('textarea');
-        textArea.value = siteUrl;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        showToast();
+      }).catch(()=>{
+        const ta=document.createElement('textarea'); ta.value=siteUrl; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 3000);
         shareModal.classList.remove('active');
       });
-    }
-
-    function showToast() {
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
     }
 
     window.addEventListener('load', initWatermark);
