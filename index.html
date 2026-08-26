@@ -17,7 +17,7 @@
       --deep-blue: #0A1538;
       --logo-blue: #003B8C;
       --gold: #D4AF37;
-      --gold-glow: rgba(212, 175, 55, 0.9);
+      --gold-glow: rgba(212, 175, 55, 0.8);
       --gold-line: 3px solid var(--gold);
     }
 
@@ -78,24 +78,23 @@
     }
     .nav-overlay a:hover { color: var(--gold); background: rgba(255,255,255,0.05); border-left-color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); transform: translateX(5px); }
 
-    /* === BOLD CONTINUOUS LOGO RAIN (ENHANCED) === */
+    /* === BOLD CONTINUOUS LOGO RAIN (CLEAN, NO GLOW) === */
     .logo-watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .falling-logo {
       position: absolute; 
       width: 150px; height: 150px; 
       border-radius: 50%; 
       overflow: hidden;
-      opacity: 0.85; 
-      border: 3px solid rgba(212,175,55,0.7);
-      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.95)) brightness(1.05);
+      opacity: 0.7; 
+      border: 2px solid rgba(255,255,255,0.2);
       animation: fallLogo 14s linear forwards;
       z-index: 1;
     }
     .falling-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @keyframes fallLogo {
       0% { transform: translateY(-150px) rotate(0deg) scale(0.9); opacity: 0; }
-      10% { opacity: 0.85; }
-      90% { opacity: 0.85; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
       100% { transform: translateY(115vh) rotate(30deg) scale(1.1); opacity: 0; }
     }
 
@@ -220,7 +219,7 @@
     .toast { position: fixed; bottom: 2.2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--deep-blue); color: white; padding: 0.9rem 1.8rem; border-radius: 10px; font-weight: 700; z-index: 1002; opacity: 0; transition: all 0.35s ease; box-shadow: 0 6px 20px rgba(0,0,0,0.3); font-size: 1rem; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* === MOBILE OPTIMIZATIONS & HEADLINE FIX === */
+    /* === MOBILE OPTIMIZATIONS === */
     @media (max-width: 768px) {
       .navbar { padding: 0 1.2rem; height: 70px; }
       .logo-icon { width: 42px; height: 42px; }
@@ -230,7 +229,6 @@
       .ks1egf-sub { font-size: 1.4rem; letter-spacing: 3px; -webkit-text-stroke: 1.5px var(--gold); }
       .home-panel { padding: 2rem 1.5rem; width: 95%; }
       
-      /* FIX: Headline crisp on mobile */
       .headline {
         font-size: 1.6rem !important;
         color: var(--logo-blue) !important;
@@ -277,7 +275,7 @@
     <a onclick="showPage('get-involved'); toggleMenu()">Get Involved</a>
   </div>
 
-  <!-- BOLD CONTINUOUS LOGO RAIN -->
+  <!-- BOLD CONTINUOUS LOGO RAIN (NO GLOW) -->
   <div class="logo-watermark" id="watermark"></div>
 
   <!-- FLOATING BUTTONS -->
@@ -309,16 +307,13 @@
   <!-- TOAST -->
   <div class="toast" id="toast">Link copied to clipboard!</div>
 
-  <!-- HOME PAGE (SEPARATED TITLE + OPTIMIZED PANEL) -->
+  <!-- HOME PAGE -->
   <div id="home" class="page active-page">
     <div class="content-wrapper">
-      <!-- Foundation Name (Separated, Gold Rope on Letters) -->
       <div class="title-container">
         <div class="main-title">KS1 Empire Global Foundation</div>
         <div class="ks1egf-sub">(KS1EGF)</div>
       </div>
-
-      <!-- Content Panel (Optimized Transparency) -->
       <div class="home-panel">
         <div class="trust-badge">🌍 A registered nonprofit advancing digital inclusion, ethical innovation, and community empowerment.</div>
         <h1 class="headline">Empowering Communities Through Ethical Digital Innovation</h1>
