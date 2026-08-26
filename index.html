@@ -17,7 +17,7 @@
       --deep-blue: #0A1538;
       --logo-blue: #003B8C;
       --gold: #D4AF37;
-      --gold-glow: rgba(212, 175, 55, 0.8);
+      --gold-glow: rgba(212, 175, 55, 0.9);
       --gold-line: 3px solid var(--gold);
     }
 
@@ -78,20 +78,25 @@
     }
     .nav-overlay a:hover { color: var(--gold); background: rgba(255,255,255,0.05); border-left-color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); transform: translateX(5px); }
 
-    /* === BOLD CONTINUOUS LOGO RAIN (BALANCED VISIBILITY) === */
+    /* === BOLD CONTINUOUS LOGO RAIN (ENHANCED) === */
     .logo-watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .falling-logo {
-      position: absolute; width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
-      opacity: 0.55; border: 2px solid rgba(212,175,55,0.4);
-      filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.7));
+      position: absolute; 
+      width: 150px; height: 150px; 
+      border-radius: 50%; 
+      overflow: hidden;
+      opacity: 0.85; 
+      border: 3px solid rgba(212,175,55,0.7);
+      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.95)) brightness(1.05);
       animation: fallLogo 14s linear forwards;
+      z-index: 1;
     }
     .falling-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @keyframes fallLogo {
       0% { transform: translateY(-150px) rotate(0deg) scale(0.9); opacity: 0; }
-      10% { opacity: 0.55; }
-      90% { opacity: 0.55; }
-      100% { transform: translateY(115vh) rotate(25deg) scale(1.1); opacity: 0; }
+      10% { opacity: 0.85; }
+      90% { opacity: 0.85; }
+      100% { transform: translateY(115vh) rotate(30deg) scale(1.1); opacity: 0; }
     }
 
     .page { display: none; min-height: calc(100vh - 160px); position: relative; z-index: 2; }
@@ -110,6 +115,7 @@
     .title-container {
       position: relative; width: 100%; max-width: 650px; margin: 0 auto 1.5rem;
       animation: floatUpDown 4.5s ease-in-out infinite;
+      z-index: 3;
     }
     .main-title, .ks1egf-sub {
       color: var(--logo-blue);
@@ -118,18 +124,19 @@
       text-shadow: 0 0 14px var(--gold-glow), 0 3px 6px rgba(0,0,0,0.12);
       font-weight: 900; letter-spacing: 1px; margin-bottom: 0.2rem;
       display: inline-block;
+      z-index: 4;
     }
     .main-title { font-size: 2.4rem; }
     .ks1egf-sub { font-size: 2rem; letter-spacing: 5px; margin-top: 0.1rem; }
 
     /* === GLASS PANEL (TRANSPARENCY OPTIMIZED) === */
     .home-panel {
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       padding: 2.5rem 2rem;
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.7);
       box-shadow: 0 12px 35px rgba(0,0,0,0.12);
       max-width: 800px;
       width: 92%;
@@ -158,6 +165,8 @@
       background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(245,247,252,0.9));
       border-radius: 18px; border-left: 3px solid var(--gold); border-top: 1px solid rgba(212,175,55,0.2);
       box-shadow: 0 8px 25px rgba(10,21,56,0.08); transition: transform 0.3s ease;
+      position: relative;
+      z-index: 5;
     }
     .section:hover { transform: translateY(-2px); }
     .section h2 { color: var(--logo-blue); font-size: 1.8rem; margin-bottom: 1rem; position: relative; padding-bottom: 0.5rem; font-weight: 900; }
@@ -169,7 +178,17 @@
     .section a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212,175,55,0.3); }
 
     /* === PREMIUM FOOTER === */
-    footer { background: linear-gradient(135deg, var(--deep-blue), #1a2a5c); padding: 2rem 1.5rem; text-align: center; color: var(--white); font-size: 1rem; border-top: var(--gold-line); margin-top: 2.5rem; }
+    footer { 
+      background: linear-gradient(135deg, var(--deep-blue), #1a2a5c); 
+      padding: 2rem 1.5rem; 
+      text-align: center; 
+      color: var(--white); 
+      font-size: 1rem; 
+      border-top: var(--gold-line); 
+      margin-top: 2.5rem; 
+      position: relative;
+      z-index: 3;
+    }
     footer p:first-child { font-weight: 900; color: var(--gold); text-shadow: 0 0 12px var(--gold-glow); margin-bottom: 0.5rem; font-size: 1.1rem; }
 
     /* === FLOATING BUTTONS === */
@@ -230,7 +249,7 @@
       .float-group { bottom: 1.8rem; right: 1.8rem; }
       .float-btn { width: 58px; height: 58px; }
       .share-modal { bottom: 140px; right: 1.8rem; left: 1.8rem; min-width: auto; }
-      .falling-logo { width: 85px; height: 85px; }
+      .falling-logo { width: 110px; height: 110px; }
     }
   </style>
 </head>
