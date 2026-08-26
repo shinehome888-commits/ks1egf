@@ -17,20 +17,19 @@
       --deep-blue: #0A1538;
       --logo-blue: #003B8C;
       --gold: #D4AF37;
-      --gold-glow: rgba(212, 175, 55, 0.9);
+      --gold-glow: rgba(212, 175, 55, 0.8);
       --gold-line: 3px solid var(--gold);
     }
 
     body {
       font-family: 'Segoe UI', Inter, system-ui, sans-serif;
-      background: radial-gradient(ellipse at 20% 30%, rgba(0, 59, 140, 0.03) 0%, transparent 50%),
-                  radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.02) 0%, transparent 50%),
+      background: radial-gradient(ellipse at 20% 30%, rgba(0, 59, 140, 0.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
                   var(--white);
       color: var(--black);
       line-height: 1.6;
       overflow-x: hidden;
       padding-top: 80px;
-      padding-bottom: 100px; /* Space for buttons above footer */
     }
 
     /* === PREMIUM HAMBURGER MENU === */
@@ -79,19 +78,19 @@
     }
     .nav-overlay a:hover { color: var(--gold); background: rgba(255,255,255,0.05); border-left-color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); transform: translateX(5px); }
 
-    /* === BOLD BACKGROUND LOGOS (NON-INTERFERING) === */
+    /* === BOLD CONTINUOUS LOGO RAIN (BALANCED VISIBILITY) === */
     .logo-watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .falling-logo {
-      position: absolute; width: 140px; height: 140px; border-radius: 50%; overflow: hidden;
-      opacity: 0.8; border: 2px solid rgba(212,175,55,0.5);
-      filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.9));
+      position: absolute; width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
+      opacity: 0.55; border: 2px solid rgba(212,175,55,0.4);
+      filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.7));
       animation: fallLogo 14s linear forwards;
     }
     .falling-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @keyframes fallLogo {
       0% { transform: translateY(-150px) rotate(0deg) scale(0.9); opacity: 0; }
-      10% { opacity: 0.8; }
-      90% { opacity: 0.8; }
+      10% { opacity: 0.55; }
+      90% { opacity: 0.55; }
       100% { transform: translateY(115vh) rotate(25deg) scale(1.1); opacity: 0; }
     }
 
@@ -103,42 +102,37 @@
       padding: 2rem 1.5rem; text-align: center;
     }
 
-    /* === PREMIUM FOUNDATION NAME (FEEL IT) === */
+    /* === SEPARATED TITLE + GOLD ROPE ON LETTERS === */
     @keyframes floatUpDown {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-10px) scale(1.02); }
-    }
-    @keyframes goldenPulse {
-      0%, 100% { filter: drop-shadow(0 0 8px var(--gold-glow)) drop-shadow(0 0 14px rgba(212,175,55,0.5)); }
-      50% { filter: drop-shadow(0 0 16px var(--gold-glow)) drop-shadow(0 0 24px rgba(212,175,55,0.8)); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
     .title-container {
-      position: relative; width: 100%; max-width: 700px; margin: 0 auto 2.5rem;
-      animation: floatUpDown 5s ease-in-out infinite;
+      position: relative; width: 100%; max-width: 650px; margin: 0 auto 1.5rem;
+      animation: floatUpDown 4.5s ease-in-out infinite;
     }
     .main-title, .ks1egf-sub {
       color: var(--logo-blue);
-      -webkit-text-stroke: 2.5px var(--gold);
+      -webkit-text-stroke: 2px var(--gold);
       paint-order: stroke fill;
-      font-weight: 900; letter-spacing: 1.5px; margin-bottom: 0.4rem;
+      text-shadow: 0 0 14px var(--gold-glow), 0 3px 6px rgba(0,0,0,0.12);
+      font-weight: 900; letter-spacing: 1px; margin-bottom: 0.2rem;
       display: inline-block;
-      animation: goldenPulse 3s ease-in-out infinite;
-      text-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 0 20px var(--gold-glow);
     }
-    .main-title { font-size: 2.8rem; line-height: 1.15; }
-    .ks1egf-sub { font-size: 2.3rem; letter-spacing: 6px; margin-top: 0.2rem; }
+    .main-title { font-size: 2.4rem; }
+    .ks1egf-sub { font-size: 2rem; letter-spacing: 5px; margin-top: 0.1rem; }
 
     /* === GLASS PANEL (TRANSPARENCY OPTIMIZED) === */
     .home-panel {
-      background: rgba(255, 255, 255, 0.84);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 2.8rem 2.2rem;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.65);
-      box-shadow: 0 15px 45px rgba(0,0,0,0.14);
-      max-width: 820px;
-      width: 94%;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 2.5rem 2rem;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+      max-width: 800px;
+      width: 92%;
       position: relative;
       z-index: 5;
     }
@@ -150,9 +144,9 @@
       opacity: 0;
       transform: scale(0.94) translateY(10px);
     }
-    .trust-badge { font-size: 1.08rem; margin-bottom: 1.4rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.3s; }
-    .headline { font-size: 2.3rem; margin-bottom: 1.1rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.6s; }
-    .subhead { font-size: 1.12rem; margin-bottom: 1.8rem; max-width: 660px; line-height: 1.5; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.9s; }
+    .trust-badge { font-size: 1.05rem; margin-bottom: 1.3rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.3s; }
+    .headline { font-size: 2.2rem; margin-bottom: 1rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.6s; }
+    .subhead { font-size: 1.1rem; margin-bottom: 1.8rem; max-width: 650px; line-height: 1.5; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.9s; }
     @keyframes convergeIn {
       0% { opacity: 0; transform: scale(0.94) translateY(10px); filter: blur(2px); }
       100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
@@ -160,14 +154,14 @@
 
     /* === PREMIUM SECTION UI === */
     .section {
-      padding: 2.4rem 2rem; margin-top: 1.5rem; max-width: 690px; margin-left: auto; margin-right: auto;
+      padding: 2.2rem 1.8rem; margin-top: 1.5rem; max-width: 680px; margin-left: auto; margin-right: auto;
       background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(245,247,252,0.9));
-      border-radius: 18px; border-left: 4px solid var(--gold); border-top: 1px solid rgba(212,175,55,0.2);
+      border-radius: 18px; border-left: 3px solid var(--gold); border-top: 1px solid rgba(212,175,55,0.2);
       box-shadow: 0 8px 25px rgba(10,21,56,0.08); transition: transform 0.3s ease;
     }
     .section:hover { transform: translateY(-2px); }
     .section h2 { color: var(--logo-blue); font-size: 1.8rem; margin-bottom: 1rem; position: relative; padding-bottom: 0.5rem; font-weight: 900; }
-    .section h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); border-radius: 2px; }
+    .section h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 55px; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); border-radius: 2px; }
     .about-content, .mission-content { text-align: left; line-height: 1.8; color: var(--black); }
     .about-content p, .mission-content p { margin-bottom: 1.2rem; font-weight: 500; }
     .principle { color: var(--gold); font-weight: 900; }
@@ -175,48 +169,19 @@
     .section a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212,175,55,0.3); }
 
     /* === PREMIUM FOOTER === */
-    footer { 
-      background: linear-gradient(135deg, var(--deep-blue), #1a2a5c); 
-      padding: 2rem 1.5rem 5rem; /* Extra bottom padding for buttons */
-      text-align: center; color: var(--white); font-size: 1rem; 
-      border-top: var(--gold-line); margin-top: 2.5rem; 
-      position: relative;
-    }
+    footer { background: linear-gradient(135deg, var(--deep-blue), #1a2a5c); padding: 2rem 1.5rem; text-align: center; color: var(--white); font-size: 1rem; border-top: var(--gold-line); margin-top: 2.5rem; }
     footer p:first-child { font-weight: 900; color: var(--gold); text-shadow: 0 0 12px var(--gold-glow); margin-bottom: 0.5rem; font-size: 1.1rem; }
 
-    /* === FLOATING BUTTONS (ABOVE FOOTER, RIGHT SIDE) === */
-    .float-group { 
-      position: fixed; 
-      bottom: 110px; 
-      right: 2.2rem; 
-      z-index: 1000; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      gap: 1.2rem; 
-    }
-    .float-btn { 
-      width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); transition: all 0.3s ease; border: 3px solid transparent;
-    }
+    /* === FLOATING BUTTONS === */
+    .float-group { position: fixed; bottom: 2.2rem; right: 2.2rem; z-index: 1000; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+    .float-btn { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); transition: all 0.3s ease; border: 3px solid transparent; }
     .float-btn:hover { transform: scale(1.12); }
-    .float-btn.whatsapp { 
-      background: linear-gradient(135deg, #25D366, #128C7E); color: white; border-color: #20B054;
-      box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
-    }
-    .float-btn.share { 
-      background: linear-gradient(135deg, var(--gold), #b8860b); color: var(--deep-blue); border-color: #b8860b;
-      box-shadow: 0 0 20px var(--gold-glow);
-    }
+    .float-btn.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; border-color: #20B054; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); }
+    .float-btn.share { background: linear-gradient(135deg, var(--gold), #b8860b); color: var(--deep-blue); border-color: #b8860b; box-shadow: 0 0 20px var(--gold-glow); }
     .float-btn svg { width: 30px; height: 30px; fill: currentColor; }
 
     /* === SHARE MODAL === */
-    .share-modal { 
-      position: fixed; bottom: 190px; right: 2.2rem; background: var(--white); border-radius: 18px;
-      padding: 1.8rem; box-shadow: 0 12px 40px rgba(0,0,0,0.2); z-index: 1001; min-width: 300px;
-      opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.35s ease;
-      border: 3px solid var(--deep-blue); max-height: 80vh; overflow-y: auto;
-    }
+    .share-modal { position: fixed; bottom: 160px; right: 2.2rem; background: var(--white); border-radius: 18px; padding: 1.8rem; box-shadow: 0 12px 40px rgba(0,0,0,0.2); z-index: 1001; min-width: 300px; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.35s ease; border: 3px solid var(--deep-blue); max-height: 80vh; overflow-y: auto; }
     .share-modal.active { opacity: 1; visibility: visible; transform: translateY(0); }
     .share-modal h3 { color: var(--logo-blue); margin-bottom: 1.2rem; font-size: 1.2rem; font-weight: 800; text-align: center; text-shadow: 0 0 8px rgba(212, 175, 55, 0.3); }
     .share-options { display: flex; flex-direction: column; gap: 0.9rem; }
@@ -233,30 +198,39 @@
     .share-option svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
     .share-close { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--logo-blue); font-weight: 300; }
 
-    .toast { 
-      position: fixed; bottom: 3.5rem; left: 50%; transform: translateX(-50%) translateY(100px);
-      background: var(--deep-blue); color: white; padding: 0.9rem 1.8rem; border-radius: 10px;
-      font-weight: 700; z-index: 1002; opacity: 0; transition: all 0.35s ease;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3); font-size: 1rem;
-    }
+    .toast { position: fixed; bottom: 2.2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--deep-blue); color: white; padding: 0.9rem 1.8rem; border-radius: 10px; font-weight: 700; z-index: 1002; opacity: 0; transition: all 0.35s ease; box-shadow: 0 6px 20px rgba(0,0,0,0.3); font-size: 1rem; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* === MOBILE OPTIMIZATIONS === */
+    /* === MOBILE OPTIMIZATIONS & HEADLINE FIX === */
     @media (max-width: 768px) {
       .navbar { padding: 0 1.2rem; height: 70px; }
       .logo-icon { width: 42px; height: 42px; }
       .nav-brand { font-size: 1.2rem; }
       .nav-overlay { width: 100%; }
-      .main-title { font-size: 2rem; -webkit-text-stroke: 2px var(--gold); }
-      .ks1egf-sub { font-size: 1.6rem; -webkit-text-stroke: 2px var(--gold); letter-spacing: 4px; }
-      .home-panel { padding: 2.2rem 1.5rem; width: 96%; }
-      .headline { font-size: 1.6rem !important; line-height: 1.25 !important; }
-      .subhead { font-size: 0.98rem; }
-      .float-group { bottom: 90px; right: 1.5rem; }
+      .main-title { font-size: 1.8rem; -webkit-text-stroke: 1.5px var(--gold); }
+      .ks1egf-sub { font-size: 1.4rem; letter-spacing: 3px; -webkit-text-stroke: 1.5px var(--gold); }
+      .home-panel { padding: 2rem 1.5rem; width: 95%; }
+      
+      /* FIX: Headline crisp on mobile */
+      .headline {
+        font-size: 1.6rem !important;
+        color: var(--logo-blue) !important;
+        text-shadow: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        line-height: 1.25 !important;
+        animation: convergeInMobile 0.8s ease-out forwards !important;
+        animation-delay: 0.6s !important;
+      }
+      @keyframes convergeInMobile {
+        0% { opacity: 0; transform: translateY(8px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .subhead { font-size: 0.95rem; }
+      .float-group { bottom: 1.8rem; right: 1.8rem; }
       .float-btn { width: 58px; height: 58px; }
-      .share-modal { bottom: 160px; right: 1.5rem; left: 1.5rem; min-width: auto; }
-      .falling-logo { width: 95px; height: 95px; }
-      footer { padding-bottom: 4rem; }
+      .share-modal { bottom: 140px; right: 1.8rem; left: 1.8rem; min-width: auto; }
+      .falling-logo { width: 85px; height: 85px; }
     }
   </style>
 </head>
@@ -287,7 +261,7 @@
   <!-- BOLD CONTINUOUS LOGO RAIN -->
   <div class="logo-watermark" id="watermark"></div>
 
-  <!-- FLOATING BUTTONS (ABOVE FOOTER) -->
+  <!-- FLOATING BUTTONS -->
   <div class="float-group">
     <a href="https://wa.me/233240254680?text=Hi%20Team%20KS1EGF!%20I'd%20like%20to%20connect." target="_blank" class="float-btn whatsapp" title="Chat with Team KS1EGF">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
@@ -316,16 +290,16 @@
   <!-- TOAST -->
   <div class="toast" id="toast">Link copied to clipboard!</div>
 
-  <!-- HOME PAGE -->
+  <!-- HOME PAGE (SEPARATED TITLE + OPTIMIZED PANEL) -->
   <div id="home" class="page active-page">
     <div class="content-wrapper">
-      <!-- Foundation Name (Separated, Bold & Golden Pulse) -->
+      <!-- Foundation Name (Separated, Gold Rope on Letters) -->
       <div class="title-container">
         <div class="main-title">KS1 Empire Global Foundation</div>
         <div class="ks1egf-sub">(KS1EGF)</div>
       </div>
 
-      <!-- Content Panel -->
+      <!-- Content Panel (Optimized Transparency) -->
       <div class="home-panel">
         <div class="trust-badge">🌍 A registered nonprofit advancing digital inclusion, ethical innovation, and community empowerment.</div>
         <h1 class="headline">Empowering Communities Through Ethical Digital Innovation</h1>
@@ -429,7 +403,7 @@
         const div = document.createElement('div');
         div.className = 'falling-logo';
         div.innerHTML = `<img src="${logoUrl}" alt="Logo">`;
-        div.style.left = `${Math.random() * 88}%`;
+        div.style.left = `${Math.random() * 90}%`;
         div.style.animationDuration = `${12 + Math.random() * 6}s`;
         container.appendChild(div);
         div.addEventListener('animationend', () => div.remove());
