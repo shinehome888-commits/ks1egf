@@ -78,7 +78,7 @@
     }
     .nav-overlay a:hover { color: var(--gold); background: rgba(255,255,255,0.08); border-left-color: var(--gold); }
 
-    /* === BACKGROUND LOGOS (BOTTOM-UP FILL - 650 ITEMS) === */
+    /* === BACKGROUND LOGOS (BOTTOM-UP FILL) === */
     .logo-watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .falling-logo {
       position: absolute; 
@@ -367,11 +367,11 @@
   </div>
 
   <script>
-    // === LOGO SEQUENCE LOGIC (BOTTOM-UP SAND FILL - 650 ITEMS) ===
+    // === LOGO SEQUENCE LOGIC (BOTTOM-UP SAND FILL - 100 ITEMS) ===
     function initWatermark() {
       const container = document.getElementById('watermark');
       const logoUrl = 'https://i.ibb.co/4g17sMww/IMG-7802-1.jpg';
-      const maxLogos = 650; // Optimized for density and performance
+      const maxLogos = 100; // Updated count
       let currentLogos = [];
       let spawnIndex = 0;
       let fillInterval;
@@ -379,25 +379,16 @@
       function spawnLogo() {
         if (spawnIndex >= maxLogos) {
           clearInterval(fillInterval);
-          setTimeout(startFadeOutSequence, 2000); // Wait 2s after full fill
+          setTimeout(startFadeOutSequence, 2000);
           return;
         }
 
         const progress = spawnIndex / maxLogos;
         
         // LOGIC: Fill from Bottom to Top
-        // 'top' value 90% is near bottom. 'top' value 5% is near top.
-        // We want logos to start at 90% and stack upwards to 5%.
-        // As progress increases, the "floor" of available space moves up.
-        
         const bottomLimit = 90; // Start at 90% from top (near bottom)
         const topLimit = 5;     // End at 5% from top (near top)
-        
-        // Calculate the highest position a logo can have based on progress.
-        // At P=0, highest is 90. At P=1, highest is 5.
         const highestAllowed = bottomLimit - (progress * (bottomLimit - topLimit));
-        
-        // Logo Y position is random between the highest allowed and the bottom limit.
         const y = highestAllowed + Math.random() * (bottomLimit - highestAllowed);
         const x = Math.random() * 95;
 
@@ -410,7 +401,6 @@
         container.appendChild(div);
         currentLogos.push(div);
 
-        // Force reflow then animate
         requestAnimationFrame(() => {
           void div.offsetWidth;
           div.classList.add('landed');
@@ -433,21 +423,19 @@
           logo.classList.remove('landed');
           logo.classList.add('fading');
           
-          // Remove from DOM after transition
           setTimeout(() => {
             if (logo.parentNode) logo.parentNode.removeChild(logo);
           }, 500);
 
           fadeIndex++;
-          setTimeout(fadeNext, 60); // Staggered fade for 650 items
+          setTimeout(fadeNext, 80);
         }
         fadeNext();
       }
 
       function startFilling() {
         spawnLogo();
-        // Spawn rate optimized for 650 items to fill in ~30 seconds
-        fillInterval = setInterval(spawnLogo, 45);
+        fillInterval = setInterval(spawnLogo, 80); // Optimized spawn rate for 100 items
       }
 
       setTimeout(startFilling, 300);
