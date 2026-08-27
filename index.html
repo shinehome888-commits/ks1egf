@@ -17,7 +17,7 @@
       --deep-blue: #0A1538;
       --menu-blue: #0A1538;
       --gold: #D4AF37;
-      --gold-glow: rgba(212, 175, 55, 0.85);
+      --gold-glow: rgba(212, 175, 55, 0.95);
       --gold-line: 3px solid var(--gold);
     }
 
@@ -78,7 +78,7 @@
     }
     .nav-overlay a:hover { color: var(--gold); background: rgba(255,255,255,0.08); border-left-color: var(--gold); }
 
-    /* === BACKGROUND LOGOS (BOTTOM-UP FILL - 650 ITEMS) === */
+    /* === BOLD BACKGROUND LOGOS (MATCHING MENU BAR STYLE) === */
     .logo-watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .falling-logo {
       position: absolute; 
@@ -86,16 +86,26 @@
       border-radius: 50%; 
       overflow: hidden;
       opacity: 0; 
-      border: 2px solid var(--gold);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 0 12px var(--gold-glow);
+      border: 3px solid var(--gold); /* Bold gold border like menu logo */
+      box-shadow: 0 0 20px var(--gold-glow), 0 4px 12px rgba(0,0,0,0.15); /* Radiant glow */
       transform: translateY(-120px) scale(0.85);
       transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, box-shadow 0.4s ease;
       z-index: 1;
       will-change: transform, opacity;
+      filter: brightness(1.05); /* Slight brightness boost for vibrancy */
     }
     .falling-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .falling-logo.landed { transform: translateY(0) scale(1); opacity: 0.7; }
-    .falling-logo.fading { opacity: 0; transform: scale(0.7) translateY(10px); box-shadow: none; }
+    .falling-logo.landed { 
+      transform: translateY(0) scale(1); 
+      opacity: 0.85; 
+      box-shadow: 0 0 25px var(--gold-glow), 0 6px 18px rgba(0,0,0,0.2); /* Enhanced glow when landed */
+    }
+    .falling-logo.fading { 
+      opacity: 0; 
+      transform: scale(0.7) translateY(10px); 
+      box-shadow: none; 
+      filter: brightness(1);
+    }
 
     .page { display: none; min-height: 100vh; position: relative; z-index: 2; background: transparent; }
     .active-page { display: block; }
@@ -367,11 +377,11 @@
   </div>
 
   <script>
-    // === LOGO SEQUENCE LOGIC (BOTTOM-UP SAND FILL - 650 ITEMS) ===
+    // === LOGO SEQUENCE LOGIC (BOTTOM-UP SAND FILL - 100 ITEMS) ===
     function initWatermark() {
       const container = document.getElementById('watermark');
       const logoUrl = 'https://i.ibb.co/4g17sMww/IMG-7802-1.jpg';
-      const maxLogos = 650; // Optimized for density and performance
+      const maxLogos = 100;
       let currentLogos = [];
       let spawnIndex = 0;
       let fillInterval;
@@ -379,25 +389,14 @@
       function spawnLogo() {
         if (spawnIndex >= maxLogos) {
           clearInterval(fillInterval);
-          setTimeout(startFadeOutSequence, 2000); // Wait 2s after full fill
+          setTimeout(startFadeOutSequence, 2000);
           return;
         }
 
         const progress = spawnIndex / maxLogos;
-        
-        // LOGIC: Fill from Bottom to Top
-        // 'top' value 90% is near bottom. 'top' value 5% is near top.
-        // We want logos to start at 90% and stack upwards to 5%.
-        // As progress increases, the "floor" of available space moves up.
-        
-        const bottomLimit = 90; // Start at 90% from top (near bottom)
-        const topLimit = 5;     // End at 5% from top (near top)
-        
-        // Calculate the highest position a logo can have based on progress.
-        // At P=0, highest is 90. At P=1, highest is 5.
+        const bottomLimit = 90;
+        const topLimit = 5;
         const highestAllowed = bottomLimit - (progress * (bottomLimit - topLimit));
-        
-        // Logo Y position is random between the highest allowed and the bottom limit.
         const y = highestAllowed + Math.random() * (bottomLimit - highestAllowed);
         const x = Math.random() * 95;
 
@@ -410,7 +409,6 @@
         container.appendChild(div);
         currentLogos.push(div);
 
-        // Force reflow then animate
         requestAnimationFrame(() => {
           void div.offsetWidth;
           div.classList.add('landed');
@@ -433,21 +431,19 @@
           logo.classList.remove('landed');
           logo.classList.add('fading');
           
-          // Remove from DOM after transition
           setTimeout(() => {
             if (logo.parentNode) logo.parentNode.removeChild(logo);
           }, 500);
 
           fadeIndex++;
-          setTimeout(fadeNext, 60); // Staggered fade for 650 items
+          setTimeout(fadeNext, 80);
         }
         fadeNext();
       }
 
       function startFilling() {
         spawnLogo();
-        // Spawn rate optimized for 650 items to fill in ~30 seconds
-        fillInterval = setInterval(spawnLogo, 45);
+        fillInterval = setInterval(spawnLogo, 80);
       }
 
       setTimeout(startFilling, 300);
