@@ -78,25 +78,29 @@
     }
     .nav-overlay a:hover { color: var(--gold); background: rgba(255,255,255,0.05); border-left-color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); transform: translateX(5px); }
 
-    /* === BOLD GOLDEN LOGO RAIN (MATCHING MENU LOGO STYLE) === */
+    /* === BACKGROUND LOGOS (FILL & CLEAR SEQUENCE) === */
     .logo-watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .falling-logo {
       position: absolute; 
       width: 140px; height: 140px; 
       border-radius: 50%; 
       overflow: hidden;
-      opacity: 0.85; 
+      opacity: 0; /* Start hidden, fade in */
       border: 3px solid var(--gold);
       box-shadow: 0 0 20px var(--gold-glow);
-      animation: fallLogo 14s linear forwards;
+      transform: translateY(-150px); /* Start off-screen top */
+      transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease, filter 0.5s ease;
       z-index: 1;
     }
     .falling-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    @keyframes fallLogo {
-      0% { transform: translateY(-150px) rotate(0deg) scale(0.9); opacity: 0; }
-      10% { opacity: 0.85; }
-      90% { opacity: 0.85; }
-      100% { transform: translateY(115vh) rotate(30deg) scale(1.1); opacity: 0; }
+    .falling-logo.landed {
+      transform: translateY(0);
+      opacity: 0.85;
+    }
+    .falling-logo.fading {
+      opacity: 0;
+      transform: scale(0.8);
+      filter: blur(4px);
     }
 
     .page { display: none; min-height: calc(100vh - 160px); position: relative; z-index: 2; }
@@ -106,28 +110,6 @@
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       padding: 2rem 1.5rem; text-align: center;
     }
-
-    /* === SEPARATED TITLE + GOLD ROPE ON LETTERS === */
-    @keyframes floatUpDown {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .title-container {
-      position: relative; width: 100%; max-width: 650px; margin: 0 auto 1.5rem;
-      animation: floatUpDown 4.5s ease-in-out infinite;
-      z-index: 3;
-    }
-    .main-title, .ks1egf-sub {
-      color: var(--logo-blue);
-      -webkit-text-stroke: 2.5px var(--gold);
-      paint-order: stroke fill;
-      text-shadow: 0 0 16px var(--gold-glow), 0 3px 6px rgba(0,0,0,0.12);
-      font-weight: 900; letter-spacing: 1.5px; margin-bottom: 0.3rem;
-      display: inline-block;
-      z-index: 4;
-    }
-    .main-title { font-size: 2.5rem; }
-    .ks1egf-sub { font-size: 2.1rem; letter-spacing: 6px; margin-top: 0.2rem; }
 
     /* === GLASS PANEL (TRANSPARENCY OPTIMIZED) === */
     .home-panel {
@@ -232,8 +214,6 @@
       .logo-icon { width: 42px; height: 42px; }
       .nav-brand { font-size: 1.2rem; }
       .nav-overlay { width: 100%; }
-      .main-title { font-size: 1.9rem; -webkit-text-stroke: 2px var(--gold); }
-      .ks1egf-sub { font-size: 1.5rem; -webkit-text-stroke: 2px var(--gold); letter-spacing: 4px; }
       .home-panel { padding: 2.2rem 1.5rem; width: 96%; }
       
       .headline {
@@ -254,7 +234,6 @@
       .float-group { bottom: 1.8rem; right: 1.8rem; }
       .float-btn { width: 58px; height: 58px; }
       .share-modal { bottom: 140px; right: 1.8rem; left: 1.8rem; min-width: auto; }
-      .falling-logo { width: 100px; height: 100px; }
     }
   </style>
 </head>
@@ -282,7 +261,7 @@
     <a onclick="showPage('get-involved'); toggleMenu()">Get Involved</a>
   </div>
 
-  <!-- BOLD GOLDEN LOGO RAIN -->
+  <!-- BACKGROUND LOGOS CONTAINER -->
   <div class="logo-watermark" id="watermark"></div>
 
   <!-- FLOATING BUTTONS -->
@@ -317,10 +296,6 @@
   <!-- HOME PAGE -->
   <div id="home" class="page active-page">
     <div class="content-wrapper">
-      <div class="title-container">
-        <div class="main-title">KS1 Empire Global Foundation</div>
-        <div class="ks1egf-sub">(KS1EGF)</div>
-      </div>
       <div class="home-panel">
         <div class="trust-badge">🌍 A registered nonprofit advancing digital inclusion, ethical innovation, and community empowerment.</div>
         <h1 class="headline">Empowering Communities Through Ethical Digital Innovation</h1>
@@ -344,10 +319,6 @@
   <!-- ABOUT PAGE -->
   <div id="about" class="page">
     <div class="content-wrapper">
-      <div class="title-container">
-        <div class="main-title">KS1 Empire Global Foundation</div>
-        <div class="ks1egf-sub">(KS1EGF)</div>
-      </div>
       <div class="section">
         <h2>About Us</h2>
         <div class="about-content">
@@ -364,10 +335,6 @@
   <!-- MISSION PAGE -->
   <div id="mission" class="page">
     <div class="content-wrapper">
-      <div class="title-container">
-        <div class="main-title">KS1 Empire Global Foundation</div>
-        <div class="ks1egf-sub">(KS1EGF)</div>
-      </div>
       <div class="section">
         <h2>Our Mission</h2>
         <div class="mission-content">
@@ -385,10 +352,6 @@
   <!-- PROJECTS PAGE -->
   <div id="projects" class="page">
     <div class="content-wrapper">
-      <div class="title-container">
-        <div class="main-title">KS1 Empire Global Foundation</div>
-        <div class="ks1egf-sub">(KS1EGF)</div>
-      </div>
       <div class="section">
         <h2>ShineGPT — Flagship Project</h2>
         <p>An AI-powered learning platform designed to deliver accessible, ethical education and digital skills to communities with limited resources.</p>
@@ -401,10 +364,6 @@
   <!-- GET INVOLVED PAGE -->
   <div id="get-involved" class="page">
     <div class="content-wrapper">
-      <div class="title-container">
-        <div class="main-title">KS1 Empire Global Foundation</div>
-        <div class="ks1egf-sub">(KS1EGF)</div>
-      </div>
       <div class="section">
         <h2>Get Involved</h2>
         <p>Join our movement to build inclusive digital futures for the next generation. Be among the first to receive updates on ShineGPT and new community-driven learning tools.</p>
@@ -417,20 +376,77 @@
   </div>
 
   <script>
+    // === LOGO SEQUENCE LOGIC ===
     function initWatermark() {
       const container = document.getElementById('watermark');
       const logoUrl = 'https://i.ibb.co/4g17sMww/IMG-7802-1.jpg';
+      const maxLogos = 12; // How many to show before clearing
+      let activeLogos = [];
+      let isRunning = true;
+      let fillInterval;
+
       function spawnLogo() {
+        if (activeLogos.length >= maxLogos) {
+          clearInterval(fillInterval);
+          startFadeOutSequence();
+          return;
+        }
+
         const div = document.createElement('div');
         div.className = 'falling-logo';
         div.innerHTML = `<img src="${logoUrl}" alt="Logo">`;
-        div.style.left = `${Math.random() * 88}%`;
-        div.style.animationDuration = `${12 + Math.random() * 6}s`;
+        
+        // Random positioning
+        const x = Math.random() * 85; // 0-85% width
+        const y = Math.random() * 80; // 0-80% height
+        
+        div.style.left = `${x}%`;
+        div.style.top = `${y}%`;
+        
         container.appendChild(div);
-        div.addEventListener('animationend', () => div.remove());
+        activeLogos.push(div);
+
+        // Trigger animation (force reflow)
+        void div.offsetWidth;
+        div.classList.add('landed');
       }
-      for(let i=0; i<8; i++) setTimeout(spawnLogo, i * 400);
-      setInterval(spawnLogo, 1800);
+
+      function startFadeOutSequence() {
+        let fadeIndex = 0;
+        
+        function fadeNext() {
+          if (fadeIndex >= activeLogos.length) {
+            // All cleared, restart sequence
+            activeLogos = [];
+            setTimeout(startFilling, 1000);
+            return;
+          }
+
+          const logo = activeLogos[fadeIndex];
+          logo.classList.remove('landed');
+          logo.classList.add('fading');
+          
+          // Remove from DOM after transition
+          setTimeout(() => {
+            if (logo.parentNode) logo.parentNode.removeChild(logo);
+          }, 600);
+
+          fadeIndex++;
+          setTimeout(fadeNext, 400); // Speed of clearing
+        }
+        
+        fadeNext();
+      }
+
+      function startFilling() {
+        // Spawn first logo immediately
+        spawnLogo();
+        // Then rapidly spawn the rest
+        fillInterval = setInterval(spawnLogo, 300);
+      }
+
+      // Start initial sequence
+      setTimeout(startFilling, 500);
     }
 
     function showPage(pageId) {
