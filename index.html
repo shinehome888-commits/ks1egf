@@ -16,6 +16,7 @@
       --black: #000000;
       --deep-blue: #0A1538;
       --logo-blue: #003B8C;
+      --rich-logo-blue: #002255; /* Deeper blue for page backgrounds */
       --gold: #D4AF37;
       --gold-glow: rgba(212, 175, 55, 0.95);
       --gold-line: 3px solid var(--gold);
@@ -111,9 +112,32 @@
       padding: 2rem 1.5rem; text-align: center;
     }
 
-    /* === GLASS PANEL (TRANSPARENCY OPTIMIZED) === */
-    .home-panel {
-      background: rgba(255, 255, 255, 0.9);
+    /* === HOME PAGE: WHITE BACKGROUND (VISIBLE LOGOS) === */
+    #home .content-wrapper {
+      background: var(--white);
+    }
+
+    /* === OTHER PAGES: DEEP BLUE BACKGROUND === */
+    .page:not(#home) .content-wrapper {
+      background: linear-gradient(135deg, var(--rich-logo-blue), #00122e);
+    }
+    .page:not(#home) h1, 
+    .page:not(#home) h2, 
+    .page:not(#home) p {
+      color: var(--white);
+    }
+    .page:not(#home) .section {
+      background: rgba(0, 34, 85, 0.6);
+      backdrop-filter: blur(10px);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    .page:not(#home) .section h2 { color: var(--gold); }
+    .page:not(#home) .about-content, 
+    .page:not(#home) .mission-content { color: #e0e0e0; }
+
+    /* === GLASS PANEL (TRANSPARENCY OPTIMIZED FOR HOME) === */
+    #home .home-panel {
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       padding: 2.8rem 2.2rem;
@@ -125,30 +149,23 @@
       position: relative;
       z-index: 5;
     }
-
-    /* === CONVERGING CONTENT === */
-    .trust-badge, .headline, .subhead {
-      color: var(--logo-blue);
-      font-weight: 800;
-      opacity: 0;
-      transform: scale(0.94) translateY(10px);
-    }
-    .trust-badge { font-size: 1.08rem; margin-bottom: 1.4rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.3s; }
-    .headline { font-size: 2.3rem; margin-bottom: 1.1rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.6s; }
-    .subhead { font-size: 1.12rem; margin-bottom: 1.8rem; max-width: 660px; line-height: 1.5; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.9s; }
-    @keyframes convergeIn {
-      0% { opacity: 0; transform: scale(0.94) translateY(10px); filter: blur(2px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
-    }
-
-    /* === PREMIUM SECTION UI === */
-    .section {
-      padding: 2.4rem 2rem; margin-top: 1.5rem; max-width: 690px; margin-left: auto; margin-right: auto;
-      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(245,247,252,0.9));
-      border-radius: 18px; border-left: 4px solid var(--gold); border-top: 1px solid rgba(212,175,55,0.2);
-      box-shadow: 0 8px 25px rgba(10,21,56,0.08); transition: transform 0.3s ease;
-      position: relative;
-      z-index: 5;
+    
+    /* === SECTIONS ON DEEP BLUE === */
+    .page:not(#home) .section {
+       background: rgba(255,255,255,0.08);
+       backdrop-filter: blur(10px);
+       padding: 2.4rem 2rem; 
+       margin-top: 1.5rem; 
+       max-width: 690px; 
+       margin-left: auto; 
+       margin-right: auto;
+       border-radius: 18px; 
+       border-left: 4px solid var(--gold); 
+       border-top: 1px solid rgba(212,175,55,0.3);
+       box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+       transition: transform 0.3s ease;
+       position: relative;
+       z-index: 5;
     }
     .section:hover { transform: translateY(-2px); }
     .section h2 { color: var(--logo-blue); font-size: 1.8rem; margin-bottom: 1rem; position: relative; padding-bottom: 0.5rem; font-weight: 900; }
@@ -156,8 +173,23 @@
     .about-content, .mission-content { text-align: left; line-height: 1.8; color: var(--black); }
     .about-content p, .mission-content p { margin-bottom: 1.2rem; font-weight: 500; }
     .principle { color: var(--gold); font-weight: 900; }
-    .section a { display:inline-block; margin-top:1rem; padding:0.7rem 1.6rem; background:var(--deep-blue); color:white; border-radius:8px; text-decoration:none; font-weight:700; border:2px solid var(--gold); transition: all 0.3s ease; }
-    .section a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212,175,55,0.3); }
+    .section a { display:inline-block; margin-top:1rem; padding:0.7rem 1.6rem; background:var(--gold); color:var(--deep-blue); border-radius:8px; text-decoration:none; font-weight:800; border:2px solid var(--gold); transition: all 0.3s ease; }
+    .section a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212,175,55,0.4); background: var(--white); color: var(--deep-blue); }
+
+    /* === CONVERGING CONTENT (HOME PAGE ONLY) === */
+    #home .trust-badge, #home .headline, #home .subhead {
+      color: var(--logo-blue);
+      font-weight: 800;
+      opacity: 0;
+      transform: scale(0.94) translateY(10px);
+    }
+    #home .trust-badge { font-size: 1.08rem; margin-bottom: 1.4rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.3s; }
+    #home .headline { font-size: 2.3rem; margin-bottom: 1.1rem; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.6s; }
+    #home .subhead { font-size: 1.12rem; margin-bottom: 1.8rem; max-width: 660px; line-height: 1.5; animation: convergeIn 0.8s ease-out forwards; animation-delay: 0.9s; }
+    @keyframes convergeIn {
+      0% { opacity: 0; transform: scale(0.94) translateY(10px); filter: blur(2px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+    }
 
     /* === PREMIUM FOOTER === */
     footer { 
@@ -214,9 +246,9 @@
       .logo-icon { width: 42px; height: 42px; }
       .nav-brand { font-size: 1.2rem; }
       .nav-overlay { width: 100%; }
-      .home-panel { padding: 2.2rem 1.5rem; width: 96%; }
       
-      .headline {
+      #home .home-panel { padding: 2.2rem 1.5rem; width: 96%; }
+      #home .headline {
         font-size: 1.6rem !important;
         color: var(--logo-blue) !important;
         text-shadow: none !important;
@@ -230,7 +262,8 @@
         0% { opacity: 0; transform: translateY(8px); }
         100% { opacity: 1; transform: translateY(0); }
       }
-      .subhead { font-size: 0.98rem; }
+      #home .subhead { font-size: 0.98rem; }
+      
       .float-group { bottom: 1.8rem; right: 1.8rem; }
       .float-btn { width: 58px; height: 58px; }
       .share-modal { bottom: 140px; right: 1.8rem; left: 1.8rem; min-width: auto; }
@@ -316,7 +349,7 @@
     </footer>
   </div>
 
-  <!-- ABOUT PAGE -->
+  <!-- ABOUT PAGE (DEEP BLUE BG) -->
   <div id="about" class="page">
     <div class="content-wrapper">
       <div class="section">
@@ -332,7 +365,7 @@
     <footer><p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p><p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p></footer>
   </div>
 
-  <!-- MISSION PAGE -->
+  <!-- MISSION PAGE (DEEP BLUE BG) -->
   <div id="mission" class="page">
     <div class="content-wrapper">
       <div class="section">
@@ -349,7 +382,7 @@
     <footer><p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p><p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p></footer>
   </div>
 
-  <!-- PROJECTS PAGE -->
+  <!-- PROJECTS PAGE (DEEP BLUE BG) -->
   <div id="projects" class="page">
     <div class="content-wrapper">
       <div class="section">
@@ -361,7 +394,7 @@
     <footer><p>© 2026 KS1 Empire Global Foundation (KS1EGF)</p><p>Advancing digital inclusion through ethical innovation, lifelong learning, and community resilience.</p></footer>
   </div>
 
-  <!-- GET INVOLVED PAGE -->
+  <!-- GET INVOLVED PAGE (DEEP BLUE BG) -->
   <div id="get-involved" class="page">
     <div class="content-wrapper">
       <div class="section">
@@ -376,13 +409,12 @@
   </div>
 
   <script>
-    // === LOGO SEQUENCE LOGIC ===
+    // === LOGO SEQUENCE LOGIC (INCREASED COUNT) ===
     function initWatermark() {
       const container = document.getElementById('watermark');
       const logoUrl = 'https://i.ibb.co/4g17sMww/IMG-7802-1.jpg';
-      const maxLogos = 12; // How many to show before clearing
+      const maxLogos = 100; // Increased to 100
       let activeLogos = [];
-      let isRunning = true;
       let fillInterval;
 
       function spawnLogo() {
@@ -406,9 +438,11 @@
         container.appendChild(div);
         activeLogos.push(div);
 
-        // Trigger animation (force reflow)
-        void div.offsetWidth;
-        div.classList.add('landed');
+        // Trigger animation
+        requestAnimationFrame(() => {
+          void div.offsetWidth;
+          div.classList.add('landed');
+        });
       }
 
       function startFadeOutSequence() {
@@ -432,7 +466,7 @@
           }, 600);
 
           fadeIndex++;
-          setTimeout(fadeNext, 400); // Speed of clearing
+          setTimeout(fadeNext, 300); // Speed of clearing (faster than filling)
         }
         
         fadeNext();
@@ -441,8 +475,8 @@
       function startFilling() {
         // Spawn first logo immediately
         spawnLogo();
-        // Then rapidly spawn the rest
-        fillInterval = setInterval(spawnLogo, 300);
+        // Then rapidly spawn the rest (normal speed)
+        fillInterval = setInterval(spawnLogo, 250); // Slightly faster spawn to reach 100 quickly
       }
 
       // Start initial sequence
