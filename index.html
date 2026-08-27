@@ -78,7 +78,7 @@
     }
     .nav-overlay a:hover { color: var(--gold); background: rgba(255,255,255,0.08); border-left-color: var(--gold); }
 
-    /* === BACKGROUND LOGOS (BOTTOM-UP FILL - 650 ITEMS) === */
+    /* === BACKGROUND LOGOS (BOTTOM-UP FILL) === */
     .logo-watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .falling-logo {
       position: absolute; 
@@ -118,17 +118,15 @@
     }
 
     /* === BOLD TYPOGRAPHY === */
-    .trust-badge { font-size: 1.15rem; font-weight: 800; color: var(--deep-blue); margin-bottom: 1.2rem; letter-spacing: 0.5px; }
     .headline { font-size: 2.5rem; font-weight: 900; color: var(--deep-blue); margin-bottom: 1rem; letter-spacing: -0.5px; line-height: 1.2; }
     .subhead { font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 1.8rem; max-width: 700px; line-height: 1.55; }
     
-    #home .trust-badge, #home .headline, #home .subhead {
+    #home .headline, #home .subhead {
       opacity: 0; transform: translateY(12px);
       animation: slideUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
-    #home .trust-badge { animation-delay: 0.3s; }
-    #home .headline { animation-delay: 0.5s; }
-    #home .subhead { animation-delay: 0.7s; }
+    #home .headline { animation-delay: 0.3s; }
+    #home .subhead { animation-delay: 0.5s; }
     @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
     /* === SECTIONS (WHITE, BOLD, PREMIUM) === */
@@ -288,16 +286,17 @@
   <div id="home" class="page active-page">
     <div class="content-wrapper">
       <div class="home-panel">
-        <div class="trust-badge">🌍 A registered nonprofit advancing digital inclusion, ethical innovation, and community empowerment.</div>
         <h1 class="headline">Empowering Communities Through Ethical Digital Innovation</h1>
         <p class="subhead">Digital Literacy · Secure Systems · Data Empowerment · Community Resilience</p>
         
         <div class="section">
           <h2>Who We Are</h2>
-          <p>A registered nonprofit dedicated to advancing digital literacy, ethical innovation, and community-driven development across Africa and beyond.</p>
-          <p style="margin-top: 1rem; font-style: italic; color: #444; font-weight: 700;">
-            We believe technology should uplift, educate, and empower—never divide or exploit.
-          </p>
+          <div class="about-content">
+            <p><strong>We are KS1 Empire Global Foundation (KS1EGF)</strong>, a registered nonprofit advancing digital inclusion, ethical innovation, and community empowerment through next-generation technologies.</p>
+            <p>Founded on the belief that technology must serve humanity with transparency and accessibility at its core, we exist to bridge the digital divide for underserved populations across Africa and the Global South.</p>
+            <p>Unlike corporate tech models, we build <strong>freedom systems</strong>: open, ethical, and community-governed tools that prioritize human dignity, lifelong learning, and sustainable progress over profit.</p>
+            <p style="color: var(--gold); font-weight: 900; margin-top: 1.2rem; letter-spacing: 0.5px;">We Build This For The People.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -367,11 +366,11 @@
   </div>
 
   <script>
-    // === LOGO SEQUENCE LOGIC (BOTTOM-UP SAND FILL - 650 ITEMS) ===
+    // === LOGO SEQUENCE LOGIC (BOTTOM-UP SAND FILL) ===
     function initWatermark() {
       const container = document.getElementById('watermark');
       const logoUrl = 'https://i.ibb.co/4g17sMww/IMG-7802-1.jpg';
-      const maxLogos = 650; // Optimized for density and performance
+      const maxLogos = 100;
       let currentLogos = [];
       let spawnIndex = 0;
       let fillInterval;
@@ -379,25 +378,14 @@
       function spawnLogo() {
         if (spawnIndex >= maxLogos) {
           clearInterval(fillInterval);
-          setTimeout(startFadeOutSequence, 2000); // Wait 2s after full fill
+          setTimeout(startFadeOutSequence, 2000);
           return;
         }
 
         const progress = spawnIndex / maxLogos;
-        
-        // LOGIC: Fill from Bottom to Top
-        // 'top' value 90% is near bottom. 'top' value 5% is near top.
-        // We want logos to start at 90% and stack upwards to 5%.
-        // As progress increases, the "floor" of available space moves up.
-        
-        const bottomLimit = 90; // Start at 90% from top (near bottom)
-        const topLimit = 5;     // End at 5% from top (near top)
-        
-        // Calculate the highest position a logo can have based on progress.
-        // At P=0, highest is 90. At P=1, highest is 5.
+        const bottomLimit = 90;
+        const topLimit = 5;
         const highestAllowed = bottomLimit - (progress * (bottomLimit - topLimit));
-        
-        // Logo Y position is random between the highest allowed and the bottom limit.
         const y = highestAllowed + Math.random() * (bottomLimit - highestAllowed);
         const x = Math.random() * 95;
 
@@ -410,7 +398,6 @@
         container.appendChild(div);
         currentLogos.push(div);
 
-        // Force reflow then animate
         requestAnimationFrame(() => {
           void div.offsetWidth;
           div.classList.add('landed');
@@ -433,21 +420,19 @@
           logo.classList.remove('landed');
           logo.classList.add('fading');
           
-          // Remove from DOM after transition
           setTimeout(() => {
             if (logo.parentNode) logo.parentNode.removeChild(logo);
           }, 500);
 
           fadeIndex++;
-          setTimeout(fadeNext, 60); // Staggered fade for 650 items
+          setTimeout(fadeNext, 80);
         }
         fadeNext();
       }
 
       function startFilling() {
         spawnLogo();
-        // Spawn rate optimized for 650 items to fill in ~30 seconds
-        fillInterval = setInterval(spawnLogo, 45);
+        fillInterval = setInterval(spawnLogo, 80);
       }
 
       setTimeout(startFilling, 300);
